@@ -1,0 +1,18 @@
+# Ignore everything
+**
+
+# Allow files and directories
+!.env*
+!/package.json
+!/yarn.lock
+!/tsconfig.json
+!/src/**
+!/node_modules/arweave/**
+!/rds-combined-ca-bundle.pem
+
+
+# Ignore unnecessary files inside allowed directories
+# This should go after the allowed directories
+**/*.log
+**/.DS_Store
+**/Thumbs.db

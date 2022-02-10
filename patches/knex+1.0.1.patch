@@ -1,0 +1,39 @@
+diff --git a/node_modules/knex/lib/knex-builder/internal/config-resolver.js b/node_modules/knex/lib/knex-builder/internal/config-resolver.js
+index dc2f322..8c9c380 100644
+--- a/node_modules/knex/lib/knex-builder/internal/config-resolver.js
++++ b/node_modules/knex/lib/knex-builder/internal/config-resolver.js
+@@ -1,3 +1,4 @@
++const Dialect = require('../../dialects/postgres/index.js');
+ const Client = require('../../client');
+ const { SUPPORTED_CLIENTS } = require('../../constants');
+ 
+@@ -5,8 +6,6 @@ const parseConnection = require('./parse-connection');
+ const { resolveClientNameWithAliases } = require('../../util/helpers');
+ 
+ function resolveConfig(config) {
+-  let Dialect;
+-  let resolvedConfig;
+ 
+   // If config is a string, try to parse it
+   const parsedConfig =
+@@ -19,11 +18,9 @@ function resolveConfig(config) {
+     arguments.length === 0 ||
+     (!parsedConfig.client && !parsedConfig.dialect)
+   ) {
+-    Dialect = Client;
+   }
+   // If user provided Client constructor as a parameter, use it
+   else if (typeof parsedConfig.client === 'function') {
+-    Dialect = parsedConfig.client;
+   }
+   // If neither applies, let's assume user specified name of a client or dialect as a string
+   else {
+@@ -34,8 +31,6 @@ function resolveConfig(config) {
+       );
+     }
+ 
+-    const resolvedClientName = resolveClientNameWithAliases(clientName);
+-    Dialect = require(`../../dialects/${resolvedClientName}/index.js`);
+   }
+ 
+   // If config connection parameter is passed as string, try to parse it

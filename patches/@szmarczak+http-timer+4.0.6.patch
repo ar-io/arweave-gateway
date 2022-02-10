@@ -1,0 +1,13 @@
+diff --git a/node_modules/@szmarczak/http-timer/dist/source/index.js b/node_modules/@szmarczak/http-timer/dist/source/index.js
+index 6f07245..1fe63a9 100644
+--- a/node_modules/@szmarczak/http-timer/dist/source/index.js
++++ b/node_modules/@szmarczak/http-timer/dist/source/index.js
+@@ -2,7 +2,7 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const defer_to_connect_1 = require("defer-to-connect");
+ const util_1 = require("util");
+-const nodejsMajorVersion = Number(process.versions.node.split('.')[0]);
++const nodejsMajorVersion = 16;
+ const timer = (request) => {
+     if (request.timings) {
+         return request.timings;
