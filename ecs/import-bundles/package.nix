@@ -47,9 +47,9 @@
 
   postInstall = ''
     mkdir -p $out/bin
-    mkdir -p $out/lib/node_modules/@arweave/import-bundles
+    mkdir -p $out/lib/node_modules/@ar.io/import-bundles
 
-    cp -rT $(pwd) $out/lib/node_modules/@arweave/import-bundles
+    cp -rT $(pwd) $out/lib/node_modules/@ar.io/import-bundles
     makeWrapper ${pkgs.nodejs_latest}/bin/node $out/bin/import-bundles-start \
       --run "cd $out/lib/node_modules/@arweave/import-bundles" \
       --prefix NODE_ENV : production \

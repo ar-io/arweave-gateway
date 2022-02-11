@@ -437,12 +437,12 @@ let
         sha512 = "FXCJgyyN3ivVgRoml4h94G/p3kY+u/B86La+QptcqJaWtBWtmc6TtkNfS40n9bIvyLteHh7zXOtgbobORKPbDg==";
       };
     };
-    "@types/node-16.11.12" = {dependencies ? []}:
+    "@types/node-17.0.2" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "16.11.12";
+      version = "17.0.2";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -463,8 +463,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-16.11.12.tgz";
-        sha512 = "+2Iggwg7PxoO5Kyhvsq9VarmPbIelXP070HMImEpbtGCoyWNINQj4wzjbQCXzdHTRXnqufutJb5KAURZANNBAw==";
+        url = "https://registry.npmjs.org/@types/node/-/node-17.0.2.tgz";
+        sha512 = "JepeIUPFDARgIs0zD/SKPgFsJEAF0X5/qO80llx59gOxFTboS9Amv3S+QfB7lqBId5sFXJ99BN0J6zFRvL9dDA==";
       };
     };
     "@types/responselike-1.0.0" = {dependencies ? []}:
@@ -2798,10 +2798,10 @@ let
       inherit dependencies extraDependencies;
       name = "aws-sdk";
       packageName = "aws-sdk";
-      version = "2.1046.0";
+      version = "2.1047.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1046.0.tgz";
-        sha512 = "ocwHclMXdIA+NWocUyvp9Ild3/zy2vr5mHp3mTyodf0WU5lzBE8PocCVLSWhMAXLxyia83xv2y5f5AzAcetbqA==";
+        url = "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1047.0.tgz";
+        sha512 = "aZg6HzcwgRpXLi8HnpwBwK+NTXlWPjLSChvdeJ+/IE9912aoAKyaV+Ydo+9h6XH0cQhkvZ2u3pFINWZVbwo+TA==";
       };
       buildInputs = [ nodejs python3 makeWrapper jq  ] ++
          (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xcodebuild ]) ++
@@ -3070,10 +3070,10 @@ let
       inherit dependencies extraDependencies;
       name = "knex";
       packageName = "knex";
-      version = "0.95.14";
+      version = "0.95.15";
       src = fetchurl {
-        url = "https://registry.npmjs.org/knex/-/knex-0.95.14.tgz";
-        sha512 = "j4qLjWySrC/JRRVtOpoR2LcS1yBOsd7Krc6mEukPvmTDX/w11pD52Pq9FYR56/kLXGeAV8jFdWBjsZFi1mscWg==";
+        url = "https://registry.npmjs.org/knex/-/knex-0.95.15.tgz";
+        sha512 = "Loq6WgHaWlmL2bfZGWPsy4l8xw4pOE+tmLGkPG0auBppxpI0UcK+GYCycJcqz9W54f2LiGewkCVLBm3Wq4ur/w==";
       };
       buildInputs = [ nodejs python3 makeWrapper jq  ] ++
          (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xcodebuild ]) ++
@@ -3662,7 +3662,7 @@ let
     "@types/keyv" = sources."@types/keyv-3.1.3" {
       dependencies = [];
     };
-    "@types/node" = sources."@types/node-16.11.12" {
+    "@types/node" = sources."@types/node-17.0.2" {
       dependencies = [];
     };
     "@types/responselike" = sources."@types/responselike-1.0.0" {
