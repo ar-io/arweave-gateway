@@ -129,6 +129,7 @@ const blockFields = [
   "id",
   "height",
   "mined_at",
+  "mined_at_utc",
   "previous_block",
   "txs",
   "extended",
@@ -187,6 +188,7 @@ export const fullBlockToDbBlock = (block) => {
     previous_block: block.previous_block,
     txs: block.txs,
     mined_at: moment(block.timestamp * 1000).format(),
+    mined_at_utc: block.timestamp,
     extended: R.pick(extendedFields)(block),
   };
 };

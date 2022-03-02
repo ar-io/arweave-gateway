@@ -23,6 +23,7 @@ CREATE TABLE public.blocks (
     id character(64) NOT NULL,
     height integer NOT NULL,
     mined_at timestamp without time zone NOT NULL,
+    mined_at_utc bigint NOT NULL,
     txs jsonb NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
     extended jsonb,
@@ -304,6 +305,11 @@ CREATE INDEX tags_name_txid ON public.tags USING btree (name, tx_id);
 
 CREATE INDEX tags_name_value ON public.tags USING btree (name, value);
 
+--
+-- NEW index
+--
+
+CREATE INDEX tags_name_value_txid ON public.tags USING btree (name, value, tx_id);
 
 --
 -- Name: tags_tx_id; Type: INDEX; Schema: public; Owner: root
