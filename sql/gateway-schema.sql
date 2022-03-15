@@ -223,27 +223,6 @@ CREATE UNIQUE INDEX blocks_height_sorted ON public.blocks USING btree (height DE
 
 
 --
--- Name: blocks_id_hash; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX blocks_id_hash ON public.blocks USING hash (id);
-
-
---
--- Name: blocks_tx_block_id_hash; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX blocks_tx_block_id_hash ON public.blocks_tx_map USING hash (block_id);
-
-
---
--- Name: chunks_created_at; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX chunks_created_at ON public.chunks USING btree (created_at);
-
-
---
 -- Name: chunks_data_root; Type: INDEX; Schema: public; Owner: root
 --
 
@@ -251,45 +230,10 @@ CREATE INDEX chunks_data_root ON public.chunks USING hash (data_root);
 
 
 --
--- Name: chunks_data_root_data_size; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX chunks_data_root_data_size ON public.chunks USING btree (data_root, data_size);
-
-
---
--- Name: chunks_exported_completed_at; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX chunks_exported_completed_at ON public.chunks USING btree (exported_completed_at);
-
-
---
 -- Name: chunks_exported_started_at; Type: INDEX; Schema: public; Owner: root
 --
 
 CREATE INDEX chunks_exported_started_at ON public.chunks USING btree (exported_started_at);
-
-
---
--- Name: index_created_at; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX index_created_at ON public.bundle_status USING btree (created_at);
-
-
---
--- Name: index_updated_at; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX index_updated_at ON public.bundle_status USING btree (updated_at);
-
-
---
--- Name: tags_name; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX tags_name ON public.tags USING hash (name);
 
 
 --
@@ -306,7 +250,7 @@ CREATE INDEX tags_name_txid ON public.tags USING btree (name, tx_id);
 CREATE INDEX tags_name_value ON public.tags USING btree (name, value);
 
 --
--- NEW index
+-- NEW index: https://ardrive.slack.com/archives/C02M14DLJ2F/p1646139862268039
 --
 
 CREATE INDEX tags_name_value_txid ON public.tags USING btree (name, value, tx_id);
@@ -317,27 +261,11 @@ CREATE INDEX tags_name_value_txid ON public.tags USING btree (name, value, tx_id
 
 CREATE INDEX tags_tx_id ON public.tags USING hash (tx_id);
 
-
---
--- Name: tags_value; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX tags_value ON public.tags USING hash (value);
-
-
 --
 -- Name: transactions_created_at; Type: INDEX; Schema: public; Owner: root
 --
 
 CREATE INDEX transactions_created_at ON public.transactions USING btree (created_at DESC);
-
-
---
--- Name: transactions_height; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX transactions_height ON public.transactions USING btree (height);
-
 
 --
 -- Name: transactions_height_id_sorted; Type: INDEX; Schema: public; Owner: root
@@ -379,13 +307,6 @@ CREATE INDEX transactions_parent ON public.transactions USING hash (parent);
 --
 
 CREATE INDEX transactions_target ON public.transactions USING hash (target);
-
-
---
--- Name: tx_id_hash; Type: INDEX; Schema: public; Owner: root
---
-
-CREATE INDEX tx_id_hash ON public.blocks_tx_map USING hash (tx_id);
 
 --
 -- Name: tags tags_tx_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: root
