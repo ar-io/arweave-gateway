@@ -24,3 +24,14 @@ export const isTxAns104 = (tx) => {
     getTagValue(tx.tags, "bundle-version") == "2.0.0"
   );
 };
+
+export const processAns102 = (tx) => {};
+
+export const processAns104 = (tx) => {
+  const iterable = (await processBundle(stream)) as any;
+  const items = [];
+  for await (const item of iterable) {
+    items.push(item);
+  }
+  data = { items };
+};

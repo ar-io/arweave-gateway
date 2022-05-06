@@ -22,7 +22,7 @@
   main = "src/index.mjs";
 
   dependencies = {
-    arbundles     = "^0.6.13";
+    arbundles     = "^0.6.16";
     async-retry   = "^1.3.3";
     aws-sdk       = "^2.1046.0";
     dotenv        = "^10.0.0";
@@ -37,6 +37,12 @@
     p-min-delay   = "^4.0.1";
     ramda         = "^0.27.1";
     sqs-consumer  = "^5.6.0";
+    winston       = "^3.6.0";
+  };
+
+  resolutions = {
+    "arweave-stream-tx@*" = "arweave-stream-tx@^1.1.0";
+    "avsc@*" = "avsc@^5.x";
   };
 
   packageDerivation = { jsnixDeps, ... }@pkgs: {
@@ -51,7 +57,8 @@
 
     cp -rT $(pwd) $out/lib/node_modules/@ar.io/import-bundles
     makeWrapper ${pkgs.nodejs_latest}/bin/node $out/bin/import-bundles-start \
-      --run "cd $out/lib/node_modules/@arweave/import-bundles" \
+      --run "cd $out/lib/node_modules/@ar.io/import-bundles" \
+      --add-flags src/index.mjs \
       --prefix NODE_ENV : production \
       --prefix NODE_PATH : "./node_modules"
     '';

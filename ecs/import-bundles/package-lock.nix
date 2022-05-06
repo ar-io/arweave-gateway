@@ -287,12 +287,12 @@ let
   '';
 };
   sources = rec {
-    "@babel/runtime-7.16.5" = {dependencies ? []}:
+    "@babel/runtime-7.17.2" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_babel_slash_runtime";
       packageName = "@babel/runtime";
-      version = "7.16.5";
+      version = "7.17.2";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -313,16 +313,136 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@babel/runtime/-/runtime-7.16.5.tgz";
-        sha512 = "TXWihFIS3Pyv5hzR7j6ihmeLkZfrXGxAr5UfSl8CHf+6q/wpiYDkUau0czckpYG8QmnCIuPpdLtuA9VmuGGyMA==";
+        url = "https://registry.npmjs.org/@babel/runtime/-/runtime-7.17.2.tgz";
+        sha512 = "hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==";
       };
     };
-    "@ethersproject/abi-5.5.0" = {dependencies ? []}:
+    "@colors/colors-1.5.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_colors_slash_colors";
+      packageName = "@colors/colors";
+      version = "1.5.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@colors/colors"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@colors/colors"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz";
+        sha512 = "ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==";
+      };
+    };
+    "@cspotcode/source-map-consumer-0.8.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_cspotcode_slash_source-map-consumer";
+      packageName = "@cspotcode/source-map-consumer";
+      version = "0.8.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@cspotcode/source-map-consumer"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@cspotcode/source-map-consumer"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@cspotcode/source-map-consumer/-/source-map-consumer-0.8.0.tgz";
+        sha512 = "41qniHzTU8yAGbCp04ohlmSrZf8bkf/iJsl3V0dRGsQN/5GFfx+LbCSsCpp2gqrqjTVg/K6O8ycoV35JIwAzAg==";
+      };
+    };
+    "@cspotcode/source-map-support-0.7.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_cspotcode_slash_source-map-support";
+      packageName = "@cspotcode/source-map-support";
+      version = "0.7.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@cspotcode/source-map-support"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@cspotcode/source-map-support"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@cspotcode/source-map-support/-/source-map-support-0.7.0.tgz";
+        sha512 = "X4xqRHqN8ACt2aHVe51OxeA2HjbcL4MqFqXkrmQszJ1NOUuUu5u6Vqx/0lZSVNku7velL5FC/s5uEAj1lsBMhA==";
+      };
+    };
+    "@dabh/diagnostics-2.0.3" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_dabh_slash_diagnostics";
+      packageName = "@dabh/diagnostics";
+      version = "2.0.3";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@dabh/diagnostics"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@dabh/diagnostics"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@dabh/diagnostics/-/diagnostics-2.0.3.tgz";
+        sha512 = "hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==";
+      };
+    };
+    "@ethersproject/abi-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_abi";
       packageName = "@ethersproject/abi";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -343,16 +463,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/abi/-/abi-5.5.0.tgz";
-        sha512 = "loW7I4AohP5KycATvc0MgujU6JyCHPqHdeoo9z3Nr9xEiNioxa65ccdm1+fsoJhkuhdRtfcL8cfyGamz2AxZ5w==";
+        url = "https://registry.npmjs.org/@ethersproject/abi/-/abi-5.6.0.tgz";
+        sha512 = "AhVByTwdXCc2YQ20v300w6KVHle9g2OFc28ZAFCPnJyEpkv1xKXjZcSTgWOlv1i+0dqlgF8RCF2Rn2KC1t+1Vg==";
       };
     };
-    "@ethersproject/abstract-provider-5.5.1" = {dependencies ? []}:
+    "@ethersproject/abstract-provider-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_abstract-provider";
       packageName = "@ethersproject/abstract-provider";
-      version = "5.5.1";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -373,16 +493,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/abstract-provider/-/abstract-provider-5.5.1.tgz";
-        sha512 = "m+MA/ful6eKbxpr99xUYeRvLkfnlqzrF8SZ46d/xFB1A7ZVknYc/sXJG0RcufF52Qn2jeFj1hhcoQ7IXjNKUqg==";
+        url = "https://registry.npmjs.org/@ethersproject/abstract-provider/-/abstract-provider-5.6.0.tgz";
+        sha512 = "oPMFlKLN+g+y7a79cLK3WiLcjWFnZQtXWgnLAbHZcN3s7L4v90UHpTOrLk+m3yr0gt+/h9STTM6zrr7PM8uoRw==";
       };
     };
-    "@ethersproject/abstract-signer-5.5.0" = {dependencies ? []}:
+    "@ethersproject/abstract-signer-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_abstract-signer";
       packageName = "@ethersproject/abstract-signer";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -403,16 +523,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/abstract-signer/-/abstract-signer-5.5.0.tgz";
-        sha512 = "lj//7r250MXVLKI7sVarXAbZXbv9P50lgmJQGr2/is82EwEb8r7HrxsmMqAjTsztMYy7ohrIhGMIml+Gx4D3mA==";
+        url = "https://registry.npmjs.org/@ethersproject/abstract-signer/-/abstract-signer-5.6.0.tgz";
+        sha512 = "WOqnG0NJKtI8n0wWZPReHtaLkDByPL67tn4nBaDAhmVq8sjHTPbCdz4DRhVu/cfTOvfy9w3iq5QZ7BX7zw56BQ==";
       };
     };
-    "@ethersproject/address-5.5.0" = {dependencies ? []}:
+    "@ethersproject/address-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_address";
       packageName = "@ethersproject/address";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -433,16 +553,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/address/-/address-5.5.0.tgz";
-        sha512 = "l4Nj0eWlTUh6ro5IbPTgbpT4wRbdH5l8CQf7icF7sb/SI3Nhd9Y9HzhonTSTi6CefI0necIw7LJqQPopPLZyWw==";
+        url = "https://registry.npmjs.org/@ethersproject/address/-/address-5.6.0.tgz";
+        sha512 = "6nvhYXjbXsHPS+30sHZ+U4VMagFC/9zAk6Gd/h3S21YW4+yfb0WfRtaAIZ4kfM4rrVwqiy284LP0GtL5HXGLxQ==";
       };
     };
-    "@ethersproject/base64-5.5.0" = {dependencies ? []}:
+    "@ethersproject/base64-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_base64";
       packageName = "@ethersproject/base64";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -463,16 +583,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/base64/-/base64-5.5.0.tgz";
-        sha512 = "tdayUKhU1ljrlHzEWbStXazDpsx4eg1dBXUSI6+mHlYklOXoXF6lZvw8tnD6oVaWfnMxAgRSKROg3cVKtCcppA==";
+        url = "https://registry.npmjs.org/@ethersproject/base64/-/base64-5.6.0.tgz";
+        sha512 = "2Neq8wxJ9xHxCF9TUgmKeSh9BXJ6OAxWfeGWvbauPh8FuHEjamgHilllx8KkSd5ErxyHIX7Xv3Fkcud2kY9ezw==";
       };
     };
-    "@ethersproject/basex-5.5.0" = {dependencies ? []}:
+    "@ethersproject/basex-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_basex";
       packageName = "@ethersproject/basex";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -493,16 +613,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/basex/-/basex-5.5.0.tgz";
-        sha512 = "ZIodwhHpVJ0Y3hUCfUucmxKsWQA5TMnavp5j/UOuDdzZWzJlRmuOjcTMIGgHCYuZmHt36BfiSyQPSRskPxbfaQ==";
+        url = "https://registry.npmjs.org/@ethersproject/basex/-/basex-5.6.0.tgz";
+        sha512 = "qN4T+hQd/Md32MoJpc69rOwLYRUXwjTlhHDIeUkUmiN/JyWkkLLMoG0TqvSQKNqZOMgN5stbUYN6ILC+eD7MEQ==";
       };
     };
-    "@ethersproject/bignumber-5.5.0" = {dependencies ? []}:
+    "@ethersproject/bignumber-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_bignumber";
       packageName = "@ethersproject/bignumber";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -523,16 +643,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/bignumber/-/bignumber-5.5.0.tgz";
-        sha512 = "6Xytlwvy6Rn3U3gKEc1vP7nR92frHkv6wtVr95LFR3jREXiCPzdWxKQ1cx4JGQBXxcguAwjA8murlYN2TSiEbg==";
+        url = "https://registry.npmjs.org/@ethersproject/bignumber/-/bignumber-5.6.0.tgz";
+        sha512 = "VziMaXIUHQlHJmkv1dlcd6GY2PmT0khtAqaMctCIDogxkrarMzA9L94KN1NeXqqOfFD6r0sJT3vCTOFSmZ07DA==";
       };
     };
-    "@ethersproject/bytes-5.5.0" = {dependencies ? []}:
+    "@ethersproject/bytes-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_bytes";
       packageName = "@ethersproject/bytes";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -553,16 +673,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/bytes/-/bytes-5.5.0.tgz";
-        sha512 = "ABvc7BHWhZU9PNM/tANm/Qx4ostPGadAuQzWTr3doklZOhDlmcBqclrQe/ZXUIj3K8wC28oYeuRa+A37tX9kog==";
+        url = "https://registry.npmjs.org/@ethersproject/bytes/-/bytes-5.6.0.tgz";
+        sha512 = "3hJPlYemb9V4VLfJF5BfN0+55vltPZSHU3QKUyP9M3Y2TcajbiRrz65UG+xVHOzBereB1b9mn7r12o177xgN7w==";
       };
     };
-    "@ethersproject/constants-5.5.0" = {dependencies ? []}:
+    "@ethersproject/constants-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_constants";
       packageName = "@ethersproject/constants";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -583,16 +703,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/constants/-/constants-5.5.0.tgz";
-        sha512 = "2MsRRVChkvMWR+GyMGY4N1sAX9Mt3J9KykCsgUFd/1mwS0UH1qw+Bv9k1UJb3X3YJYFco9H20pjSlOIfCG5HYQ==";
+        url = "https://registry.npmjs.org/@ethersproject/constants/-/constants-5.6.0.tgz";
+        sha512 = "SrdaJx2bK0WQl23nSpV/b1aq293Lh0sUaZT/yYKPDKn4tlAbkH96SPJwIhwSwTsoQQZxuh1jnqsKwyymoiBdWA==";
       };
     };
-    "@ethersproject/contracts-5.5.0" = {dependencies ? []}:
+    "@ethersproject/contracts-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_contracts";
       packageName = "@ethersproject/contracts";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -613,16 +733,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/contracts/-/contracts-5.5.0.tgz";
-        sha512 = "2viY7NzyvJkh+Ug17v7g3/IJC8HqZBDcOjYARZLdzRxrfGlRgmYgl6xPRKVbEzy1dWKw/iv7chDcS83pg6cLxg==";
+        url = "https://registry.npmjs.org/@ethersproject/contracts/-/contracts-5.6.0.tgz";
+        sha512 = "74Ge7iqTDom0NX+mux8KbRUeJgu1eHZ3iv6utv++sLJG80FVuU9HnHeKVPfjd9s3woFhaFoQGf3B3iH/FrQmgw==";
       };
     };
-    "@ethersproject/hash-5.5.0" = {dependencies ? []}:
+    "@ethersproject/hash-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_hash";
       packageName = "@ethersproject/hash";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -643,16 +763,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/hash/-/hash-5.5.0.tgz";
-        sha512 = "dnGVpK1WtBjmnp3mUT0PlU2MpapnwWI0PibldQEq1408tQBAbZpPidkWoVVuNMOl/lISO3+4hXZWCL3YV7qzfg==";
+        url = "https://registry.npmjs.org/@ethersproject/hash/-/hash-5.6.0.tgz";
+        sha512 = "fFd+k9gtczqlr0/BruWLAu7UAOas1uRRJvOR84uDf4lNZ+bTkGl366qvniUZHKtlqxBRU65MkOobkmvmpHU+jA==";
       };
     };
-    "@ethersproject/hdnode-5.5.0" = {dependencies ? []}:
+    "@ethersproject/hdnode-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_hdnode";
       packageName = "@ethersproject/hdnode";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -673,16 +793,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/hdnode/-/hdnode-5.5.0.tgz";
-        sha512 = "mcSOo9zeUg1L0CoJH7zmxwUG5ggQHU1UrRf8jyTYy6HxdZV+r0PBoL1bxr+JHIPXRzS6u/UW4mEn43y0tmyF8Q==";
+        url = "https://registry.npmjs.org/@ethersproject/hdnode/-/hdnode-5.6.0.tgz";
+        sha512 = "61g3Jp3nwDqJcL/p4nugSyLrpl/+ChXIOtCEM8UDmWeB3JCAt5FoLdOMXQc3WWkc0oM2C0aAn6GFqqMcS/mHTw==";
       };
     };
-    "@ethersproject/json-wallets-5.5.0" = {dependencies ? []}:
+    "@ethersproject/json-wallets-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_json-wallets";
       packageName = "@ethersproject/json-wallets";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -703,16 +823,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/json-wallets/-/json-wallets-5.5.0.tgz";
-        sha512 = "9lA21XQnCdcS72xlBn1jfQdj2A1VUxZzOzi9UkNdnokNKke/9Ya2xA9aIK1SC3PQyBDLt4C+dfps7ULpkvKikQ==";
+        url = "https://registry.npmjs.org/@ethersproject/json-wallets/-/json-wallets-5.6.0.tgz";
+        sha512 = "fmh86jViB9r0ibWXTQipxpAGMiuxoqUf78oqJDlCAJXgnJF024hOOX7qVgqsjtbeoxmcLwpPsXNU0WEe/16qPQ==";
       };
     };
-    "@ethersproject/keccak256-5.5.0" = {dependencies ? []}:
+    "@ethersproject/keccak256-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_keccak256";
       packageName = "@ethersproject/keccak256";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -733,16 +853,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/keccak256/-/keccak256-5.5.0.tgz";
-        sha512 = "5VoFCTjo2rYbBe1l2f4mccaRFN/4VQEYFwwn04aJV2h7qf4ZvI2wFxUE1XOX+snbwCLRzIeikOqtAoPwMza9kg==";
+        url = "https://registry.npmjs.org/@ethersproject/keccak256/-/keccak256-5.6.0.tgz";
+        sha512 = "tk56BJ96mdj/ksi7HWZVWGjCq0WVl/QvfhFQNeL8fxhBlGoP+L80uDCiQcpJPd+2XxkivS3lwRm3E0CXTfol0w==";
       };
     };
-    "@ethersproject/logger-5.5.0" = {dependencies ? []}:
+    "@ethersproject/logger-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_logger";
       packageName = "@ethersproject/logger";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -763,16 +883,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/logger/-/logger-5.5.0.tgz";
-        sha512 = "rIY/6WPm7T8n3qS2vuHTUBPdXHl+rGxWxW5okDfo9J4Z0+gRRZT0msvUdIJkE4/HS29GUMziwGaaKO2bWONBrg==";
+        url = "https://registry.npmjs.org/@ethersproject/logger/-/logger-5.6.0.tgz";
+        sha512 = "BiBWllUROH9w+P21RzoxJKzqoqpkyM1pRnEKG69bulE9TSQD8SAIvTQqIMZmmCO8pUNkgLP1wndX1gKghSpBmg==";
       };
     };
-    "@ethersproject/networks-5.5.2" = {dependencies ? []}:
+    "@ethersproject/networks-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_networks";
       packageName = "@ethersproject/networks";
-      version = "5.5.2";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -793,16 +913,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/networks/-/networks-5.5.2.tgz";
-        sha512 = "NEqPxbGBfy6O3x4ZTISb90SjEDkWYDUbEeIFhJly0F7sZjoQMnj5KYzMSkMkLKZ+1fGpx00EDpHQCy6PrDupkQ==";
+        url = "https://registry.npmjs.org/@ethersproject/networks/-/networks-5.6.0.tgz";
+        sha512 = "DaVzgyThzHgSDLuURhvkp4oviGoGe9iTZW4jMEORHDRCgSZ9K9THGFKqL+qGXqPAYLEgZTf5z2w56mRrPR1MjQ==";
       };
     };
-    "@ethersproject/pbkdf2-5.5.0" = {dependencies ? []}:
+    "@ethersproject/pbkdf2-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_pbkdf2";
       packageName = "@ethersproject/pbkdf2";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -823,16 +943,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/pbkdf2/-/pbkdf2-5.5.0.tgz";
-        sha512 = "SaDvQFvXPnz1QGpzr6/HToLifftSXGoXrbpZ6BvoZhmx4bNLHrxDe8MZisuecyOziP1aVEwzC2Hasj+86TgWVg==";
+        url = "https://registry.npmjs.org/@ethersproject/pbkdf2/-/pbkdf2-5.6.0.tgz";
+        sha512 = "Wu1AxTgJo3T3H6MIu/eejLFok9TYoSdgwRr5oGY1LTLfmGesDoSx05pemsbrPT2gG4cQME+baTSCp5sEo2erZQ==";
       };
     };
-    "@ethersproject/properties-5.5.0" = {dependencies ? []}:
+    "@ethersproject/properties-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_properties";
       packageName = "@ethersproject/properties";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -853,16 +973,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/properties/-/properties-5.5.0.tgz";
-        sha512 = "l3zRQg3JkD8EL3CPjNK5g7kMx4qSwiR60/uk5IVjd3oq1MZR5qUg40CNOoEJoX5wc3DyY5bt9EbMk86C7x0DNA==";
+        url = "https://registry.npmjs.org/@ethersproject/properties/-/properties-5.6.0.tgz";
+        sha512 = "szoOkHskajKePTJSZ46uHUWWkbv7TzP2ypdEK6jGMqJaEt2sb0jCgfBo0gH0m2HBpRixMuJ6TBRaQCF7a9DoCg==";
       };
     };
-    "@ethersproject/providers-5.5.3" = {dependencies ? []}:
+    "@ethersproject/providers-5.6.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_providers";
       packageName = "@ethersproject/providers";
-      version = "5.5.3";
+      version = "5.6.1";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -883,16 +1003,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/providers/-/providers-5.5.3.tgz";
-        sha512 = "ZHXxXXXWHuwCQKrgdpIkbzMNJMvs+9YWemanwp1fA7XZEv7QlilseysPvQe0D7Q7DlkJX/w/bGA1MdgK2TbGvA==";
+        url = "https://registry.npmjs.org/@ethersproject/providers/-/providers-5.6.1.tgz";
+        sha512 = "w8Wx15nH+aVDvnoKCyI1f3x0B5idmk/bDJXMEUqCfdO8Eadd0QpDx9lDMTMmenhOmf9vufLJXjpSm24D3ZnVpg==";
       };
     };
-    "@ethersproject/random-5.5.1" = {dependencies ? []}:
+    "@ethersproject/random-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_random";
       packageName = "@ethersproject/random";
-      version = "5.5.1";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -913,16 +1033,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/random/-/random-5.5.1.tgz";
-        sha512 = "YaU2dQ7DuhL5Au7KbcQLHxcRHfgyNgvFV4sQOo0HrtW3Zkrc9ctWNz8wXQ4uCSfSDsqX2vcjhroxU5RQRV0nqA==";
+        url = "https://registry.npmjs.org/@ethersproject/random/-/random-5.6.0.tgz";
+        sha512 = "si0PLcLjq+NG/XHSZz90asNf+YfKEqJGVdxoEkSukzbnBgC8rydbgbUgBbBGLeHN4kAJwUFEKsu3sCXT93YMsw==";
       };
     };
-    "@ethersproject/rlp-5.5.0" = {dependencies ? []}:
+    "@ethersproject/rlp-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_rlp";
       packageName = "@ethersproject/rlp";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -943,16 +1063,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/rlp/-/rlp-5.5.0.tgz";
-        sha512 = "hLv8XaQ8PTI9g2RHoQGf/WSxBfTB/NudRacbzdxmst5VHAqd1sMibWG7SENzT5Dj3yZ3kJYx+WiRYEcQTAkcYA==";
+        url = "https://registry.npmjs.org/@ethersproject/rlp/-/rlp-5.6.0.tgz";
+        sha512 = "dz9WR1xpcTL+9DtOT/aDO+YyxSSdO8YIS0jyZwHHSlAmnxA6cKU3TrTd4Xc/bHayctxTgGLYNuVVoiXE4tTq1g==";
       };
     };
-    "@ethersproject/sha2-5.5.0" = {dependencies ? []}:
+    "@ethersproject/sha2-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_sha2";
       packageName = "@ethersproject/sha2";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -973,16 +1093,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/sha2/-/sha2-5.5.0.tgz";
-        sha512 = "B5UBoglbCiHamRVPLA110J+2uqsifpZaTmid2/7W5rbtYVz6gus6/hSDieIU/6gaKIDcOj12WnOdiymEUHIAOA==";
+        url = "https://registry.npmjs.org/@ethersproject/sha2/-/sha2-5.6.0.tgz";
+        sha512 = "1tNWCPFLu1n3JM9t4/kytz35DkuF9MxqkGGEHNauEbaARdm2fafnOyw1s0tIQDPKF/7bkP1u3dbrmjpn5CelyA==";
       };
     };
-    "@ethersproject/signing-key-5.5.0" = {dependencies ? []}:
+    "@ethersproject/signing-key-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_signing-key";
       packageName = "@ethersproject/signing-key";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1003,16 +1123,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/signing-key/-/signing-key-5.5.0.tgz";
-        sha512 = "5VmseH7qjtNmDdZBswavhotYbWB0bOwKIlOTSlX14rKn5c11QmJwGt4GHeo7NrL/Ycl7uo9AHvEqs5xZgFBTng==";
+        url = "https://registry.npmjs.org/@ethersproject/signing-key/-/signing-key-5.6.0.tgz";
+        sha512 = "S+njkhowmLeUu/r7ir8n78OUKx63kBdMCPssePS89So1TH4hZqnWFsThEd/GiXYp9qMxVrydf7KdM9MTGPFukA==";
       };
     };
-    "@ethersproject/solidity-5.5.0" = {dependencies ? []}:
+    "@ethersproject/solidity-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_solidity";
       packageName = "@ethersproject/solidity";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1033,16 +1153,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/solidity/-/solidity-5.5.0.tgz";
-        sha512 = "9NgZs9LhGMj6aCtHXhtmFQ4AN4sth5HuFXVvAQtzmm0jpSCNOTGtrHZJAeYTh7MBjRR8brylWZxBZR9zDStXbw==";
+        url = "https://registry.npmjs.org/@ethersproject/solidity/-/solidity-5.6.0.tgz";
+        sha512 = "YwF52vTNd50kjDzqKaoNNbC/r9kMDPq3YzDWmsjFTRBcIF1y4JCQJ8gB30wsTfHbaxgxelI5BfxQSxD/PbJOww==";
       };
     };
-    "@ethersproject/strings-5.5.0" = {dependencies ? []}:
+    "@ethersproject/strings-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_strings";
       packageName = "@ethersproject/strings";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1063,16 +1183,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/strings/-/strings-5.5.0.tgz";
-        sha512 = "9fy3TtF5LrX/wTrBaT8FGE6TDJyVjOvXynXJz5MT5azq+E6D92zuKNx7i29sWW2FjVOaWjAsiZ1ZWznuduTIIQ==";
+        url = "https://registry.npmjs.org/@ethersproject/strings/-/strings-5.6.0.tgz";
+        sha512 = "uv10vTtLTZqrJuqBZR862ZQjTIa724wGPWQqZrofaPI/kUsf53TBG0I0D+hQ1qyNtllbNzaW+PDPHHUI6/65Mg==";
       };
     };
-    "@ethersproject/transactions-5.5.0" = {dependencies ? []}:
+    "@ethersproject/transactions-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_transactions";
       packageName = "@ethersproject/transactions";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1093,16 +1213,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/transactions/-/transactions-5.5.0.tgz";
-        sha512 = "9RZYSKX26KfzEd/1eqvv8pLauCKzDTub0Ko4LfIgaERvRuwyaNV78mJs7cpIgZaDl6RJui4o49lHwwCM0526zA==";
+        url = "https://registry.npmjs.org/@ethersproject/transactions/-/transactions-5.6.0.tgz";
+        sha512 = "4HX+VOhNjXHZyGzER6E/LVI2i6lf9ejYeWD6l4g50AdmimyuStKc39kvKf1bXWQMg7QNVh+uC7dYwtaZ02IXeg==";
       };
     };
-    "@ethersproject/units-5.5.0" = {dependencies ? []}:
+    "@ethersproject/units-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_units";
       packageName = "@ethersproject/units";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1123,16 +1243,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/units/-/units-5.5.0.tgz";
-        sha512 = "7+DpjiZk4v6wrikj+TCyWWa9dXLNU73tSTa7n0TSJDxkYbV3Yf1eRh9ToMLlZtuctNYu9RDNNy2USq3AdqSbag==";
+        url = "https://registry.npmjs.org/@ethersproject/units/-/units-5.6.0.tgz";
+        sha512 = "tig9x0Qmh8qbo1w8/6tmtyrm/QQRviBh389EQ+d8fP4wDsBrJBf08oZfoiz1/uenKK9M78yAP4PoR7SsVoTjsw==";
       };
     };
-    "@ethersproject/wallet-5.5.0" = {dependencies ? []}:
+    "@ethersproject/wallet-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_wallet";
       packageName = "@ethersproject/wallet";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1153,16 +1273,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/wallet/-/wallet-5.5.0.tgz";
-        sha512 = "Mlu13hIctSYaZmUOo7r2PhNSd8eaMPVXe1wxrz4w4FCE4tDYBywDH+bAR1Xz2ADyXGwqYMwstzTrtUVIsKDO0Q==";
+        url = "https://registry.npmjs.org/@ethersproject/wallet/-/wallet-5.6.0.tgz";
+        sha512 = "qMlSdOSTyp0MBeE+r7SUhr1jjDlC1zAXB8VD84hCnpijPQiSNbxr6GdiLXxpUs8UKzkDiNYYC5DRI3MZr+n+tg==";
       };
     };
-    "@ethersproject/web-5.5.1" = {dependencies ? []}:
+    "@ethersproject/web-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_web";
       packageName = "@ethersproject/web";
-      version = "5.5.1";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1183,16 +1303,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/web/-/web-5.5.1.tgz";
-        sha512 = "olvLvc1CB12sREc1ROPSHTdFCdvMh0J5GSJYiQg2D0hdD4QmJDy8QYDb1CvoqD/bF1c++aeKv2sR5uduuG9dQg==";
+        url = "https://registry.npmjs.org/@ethersproject/web/-/web-5.6.0.tgz";
+        sha512 = "G/XHj0hV1FxI2teHRfCGvfBUHFmU+YOSbCxlAMqJklxSa7QMiHFQfAxvwY2PFqgvdkxEKwRNr/eCjfAPEm2Ctg==";
       };
     };
-    "@ethersproject/wordlists-5.5.0" = {dependencies ? []}:
+    "@ethersproject/wordlists-5.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_ethersproject_slash_wordlists";
       packageName = "@ethersproject/wordlists";
-      version = "5.5.0";
+      version = "5.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1213,16 +1333,76 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@ethersproject/wordlists/-/wordlists-5.5.0.tgz";
-        sha512 = "bL0UTReWDiaQJJYOC9sh/XcRu/9i2jMrzf8VLRmPKx58ckSlOJiohODkECCO50dtLZHcGU6MLXQ4OOrgBwP77Q==";
+        url = "https://registry.npmjs.org/@ethersproject/wordlists/-/wordlists-5.6.0.tgz";
+        sha512 = "q0bxNBfIX3fUuAo9OmjlEYxP40IB8ABgb7HjEZCL5IKubzV3j30CWi2rqQbjTS2HfoyQbfINoKcTVWP4ejwR7Q==";
       };
     };
-    "@sindresorhus/is-4.2.0" = {dependencies ? []}:
+    "@randlabs/communication-bridge-1.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_randlabs_slash_communication-bridge";
+      packageName = "@randlabs/communication-bridge";
+      version = "1.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@randlabs/communication-bridge"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@randlabs/communication-bridge"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@randlabs/communication-bridge/-/communication-bridge-1.0.0.tgz";
+        sha512 = "CuJNwtMTG1LHR1LQNWUPv+8xPUdkRY9p61wGJEp8J/N3q8djmnMySvSQlyVqLBvXsTPKmYc0ZmfXEXCpb5P5Cw==";
+      };
+    };
+    "@randlabs/myalgo-connect-1.1.2" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_randlabs_slash_myalgo-connect";
+      packageName = "@randlabs/myalgo-connect";
+      version = "1.1.2";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@randlabs/myalgo-connect"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@randlabs/myalgo-connect"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@randlabs/myalgo-connect/-/myalgo-connect-1.1.2.tgz";
+        sha512 = "UPsdWfZmnRvEuGL83MNolSzVRDfCo4cURA5Bxi9whRcoglEte3hUgEwbxesaeCnpByvgLNYM9YBbjBb8Bh9PqQ==";
+      };
+    };
+    "@sindresorhus/is-4.6.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_sindresorhus_slash_is";
       packageName = "@sindresorhus/is";
-      version = "4.2.0";
+      version = "4.6.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1243,8 +1423,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@sindresorhus/is/-/is-4.2.0.tgz";
-        sha512 = "VkE3KLBmJwcCaVARtQpfuKcKv8gcBmUubrfHGF84dXuuW6jgsRYxPtzcIhPyK9WAPpRt2/xY6zkD9MnRaJzSyw==";
+        url = "https://registry.npmjs.org/@sindresorhus/is/-/is-4.6.0.tgz";
+        sha512 = "t09vSN3MdfsyCHoFcTRCH/iUtG7OJ0CsjzB8cjAmKc/va/kIgeDI/TxsigdncE/4be734m0cvIYwNaV4i2XqAw==";
       };
     };
     "@solana/buffer-layout-3.0.0" = {dependencies ? []}:
@@ -1277,12 +1457,12 @@ let
         sha512 = "MVdgAKKL39tEs0l8je0hKaXLQFb7Rdfb0Xg2LjFZd8Lfdazkg6xiS98uAZrEKvaoF3i4M95ei9RydkGIDMeo3w==";
       };
     };
-    "@solana/wallet-adapter-base-0.9.3" = {dependencies ? []}:
+    "@solana/wallet-adapter-base-0.9.5" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_solana_slash_wallet-adapter-base";
       packageName = "@solana/wallet-adapter-base";
-      version = "0.9.3";
+      version = "0.9.5";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1303,16 +1483,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@solana/wallet-adapter-base/-/wallet-adapter-base-0.9.3.tgz";
-        sha512 = "XXUZJWvFouNuuBVnTGZjEhZQFszG60Ss3qDbmV2O4j6S4IwgfabCZ/J+eMG02a86nGEjQrfKz0jmumpmYICZOQ==";
+        url = "https://registry.npmjs.org/@solana/wallet-adapter-base/-/wallet-adapter-base-0.9.5.tgz";
+        sha512 = "KCrSB2s8lA38Bd+aPvHlwPEHZU1owD6LSCikjumUaR3HCcpv+V1lxgQX+tdNaDyEVTKlAYNd0uJU+yQfQlkiOA==";
       };
     };
-    "@solana/web3.js-1.34.0" = {dependencies ? []}:
+    "@solana/web3.js-1.36.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_solana_slash_web3.js";
       packageName = "@solana/web3.js";
-      version = "1.34.0";
+      version = "1.36.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1333,8 +1513,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@solana/web3.js/-/web3.js-1.34.0.tgz";
-        sha512 = "6QvqN2DqEELvuV+5yUQM8P9fRiSG+6SzQ58HjumJqODu14r7eu5HXVWEymvKAvMLGME+0TmAdJHjw9xD5NgUWA==";
+        url = "https://registry.npmjs.org/@solana/web3.js/-/web3.js-1.36.0.tgz";
+        sha512 = "RNT1451iRR7TyW7EJKMCrH/0OXawIe4zVm0DWQASwXlR/u1jmW6FrmH0lujIh7cGTlfOVbH+2ZU9AVUPLBFzwA==";
       };
     };
     "@szmarczak/http-timer-5.0.1" = {dependencies ? []}:
@@ -1365,6 +1545,126 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/@szmarczak/http-timer/-/http-timer-5.0.1.tgz";
         sha512 = "+PmQX0PiAYPMeVYe237LJAYvOMYW1j2rH5YROyS3b4CTVJum34HfRvKvAzozHAQG0TnHNdUfY9nCeUyRAs//cw==";
+      };
+    };
+    "@tsconfig/node10-1.0.8" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_tsconfig_slash_node10";
+      packageName = "@tsconfig/node10";
+      version = "1.0.8";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@tsconfig/node10"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@tsconfig/node10"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@tsconfig/node10/-/node10-1.0.8.tgz";
+        sha512 = "6XFfSQmMgq0CFLY1MslA/CPUfhIL919M1rMsa5lP2P097N2Wd1sSX0tx1u4olM16fLNhtHZpRhedZJphNJqmZg==";
+      };
+    };
+    "@tsconfig/node12-1.0.9" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_tsconfig_slash_node12";
+      packageName = "@tsconfig/node12";
+      version = "1.0.9";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@tsconfig/node12"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@tsconfig/node12"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@tsconfig/node12/-/node12-1.0.9.tgz";
+        sha512 = "/yBMcem+fbvhSREH+s14YJi18sp7J9jpuhYByADT2rypfajMZZN4WQ6zBGgBKp53NKmqI36wFYDb3yaMPurITw==";
+      };
+    };
+    "@tsconfig/node14-1.0.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_tsconfig_slash_node14";
+      packageName = "@tsconfig/node14";
+      version = "1.0.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@tsconfig/node14"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@tsconfig/node14"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@tsconfig/node14/-/node14-1.0.1.tgz";
+        sha512 = "509r2+yARFfHHE7T6Puu2jjkoycftovhXRqW328PDXTVGKihlb1P8Z9mMZH04ebyajfRY7dedfGynlrFHJUQCg==";
+      };
+    };
+    "@tsconfig/node16-1.0.2" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "_at_tsconfig_slash_node16";
+      packageName = "@tsconfig/node16";
+      version = "1.0.2";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "@tsconfig/node16"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "@tsconfig/node16"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@tsconfig/node16/-/node16-1.0.2.tgz";
+        sha512 = "eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==";
       };
     };
     "@types/axios-0.14.0" = {dependencies ? []}:
@@ -1517,12 +1817,12 @@ let
         sha512 = "cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==";
       };
     };
-    "@types/express-serve-static-core-4.17.26" = {dependencies ? []}:
+    "@types/express-serve-static-core-4.17.28" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_types_slash_express-serve-static-core";
       packageName = "@types/express-serve-static-core";
-      version = "4.17.26";
+      version = "4.17.28";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1543,8 +1843,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/express-serve-static-core/-/express-serve-static-core-4.17.26.tgz";
-        sha512 = "zeu3tpouA043RHxW0gzRxwCHchMgftE8GArRsvYT0ByDMbn19olQHx5jLue0LxWY6iYtXb7rXmuVtSkhy9YZvQ==";
+        url = "https://registry.npmjs.org/@types/express-serve-static-core/-/express-serve-static-core-4.17.28.tgz";
+        sha512 = "P1BJAEAW3E2DJUlkgq4tOL3RyMunoWXqbSCygWo5ZIWTjUgN1YnaXWW4VWl/oc8vs/XoYibEGBKP0uZyF4AHig==";
       };
     };
     "@types/http-cache-semantics-4.0.1" = {dependencies ? []}:
@@ -1607,12 +1907,12 @@ let
         sha512 = "FXCJgyyN3ivVgRoml4h94G/p3kY+u/B86La+QptcqJaWtBWtmc6TtkNfS40n9bIvyLteHh7zXOtgbobORKPbDg==";
       };
     };
-    "@types/lodash-4.14.178" = {dependencies ? []}:
+    "@types/lodash-4.14.179" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_types_slash_lodash";
       packageName = "@types/lodash";
-      version = "4.14.178";
+      version = "4.14.179";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1633,8 +1933,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.178.tgz";
-        sha512 = "0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==";
+        url = "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.179.tgz";
+        sha512 = "uwc1x90yCKqGcIOAT6DwOSuxnrAbpkdPsUOZtwrXb4D/6wZs+6qG7QnIawDuZWg0sWpxl+ltIKCaLoMlna678w==";
       };
     };
     "@types/multistream-2.1.2" = {dependencies ? []}:
@@ -1667,12 +1967,12 @@ let
         sha512 = "Q0LINZC7Q2HE+M7uMh2QZp54F/4wz+8Vs6IEXCmeboxb3EScvqczARXPmGjP8GrEbLf68haIUjfWuQw9/kB63w==";
       };
     };
-    "@types/node-12.20.38" = {dependencies ? []}:
+    "@types/node-12.20.46" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "12.20.38";
+      version = "12.20.46";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1693,16 +1993,16 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-12.20.38.tgz";
-        sha512 = "NxmtBRGipjx1B225OeMdI+CQmLbYqvvmYbukDTJGDgzIDgPQ1EcjGmYxGhOk5hTBqeB558S6RgHSpq2iiqifAQ==";
+        url = "https://registry.npmjs.org/@types/node/-/node-12.20.46.tgz";
+        sha512 = "cPjLXj8d6anFPzFvOPxS3fvly3Shm5nTfl6g8X5smexixbuGUf7hfr21J5tX9JW+UPStp/5P5R8qrKL5IyVJ+A==";
       };
     };
-    "@types/node-17.0.2" = {dependencies ? []}:
+    "@types/node-17.0.21" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "_at_types_slash_node";
       packageName = "@types/node";
-      version = "17.0.2";
+      version = "17.0.21";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -1723,8 +2023,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/@types/node/-/node-17.0.2.tgz";
-        sha512 = "JepeIUPFDARgIs0zD/SKPgFsJEAF0X5/qO80llx59gOxFTboS9Amv3S+QfB7lqBId5sFXJ99BN0J6zFRvL9dDA==";
+        url = "https://registry.npmjs.org/@types/node/-/node-17.0.21.tgz";
+        sha512 = "DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==";
       };
     };
     "@types/qs-6.9.7" = {dependencies ? []}:
@@ -1907,6 +2207,66 @@ let
         sha512 = "E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ==";
       };
     };
+    "acorn-8.7.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "acorn";
+      packageName = "acorn";
+      version = "8.7.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "acorn"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "acorn"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/acorn/-/acorn-8.7.0.tgz";
+        sha512 = "V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==";
+      };
+    };
+    "acorn-walk-8.2.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "acorn-walk";
+      packageName = "acorn-walk";
+      version = "8.2.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "acorn-walk"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "acorn-walk"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/acorn-walk/-/acorn-walk-8.2.0.tgz";
+        sha512 = "k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==";
+      };
+    };
     "aes-js-3.0.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -1937,6 +2297,66 @@ let
         sha1 = "e21df10ad6c2053295bcbb8dab40b09dbea87e4d";
       };
     };
+    "algo-msgpack-with-bigint-2.1.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "algo-msgpack-with-bigint";
+      packageName = "algo-msgpack-with-bigint";
+      version = "2.1.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "algo-msgpack-with-bigint"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "algo-msgpack-with-bigint"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/algo-msgpack-with-bigint/-/algo-msgpack-with-bigint-2.1.1.tgz";
+        sha512 = "F1tGh056XczEaEAqu7s+hlZUDWwOBT70Eq0lfMpBP2YguSQVyxRbprLq5rELXKQOyOaixTWYhMeMQMzP0U5FoQ==";
+      };
+    };
+    "algosdk-1.14.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "algosdk";
+      packageName = "algosdk";
+      version = "1.14.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "algosdk"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "algosdk"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/algosdk/-/algosdk-1.14.0.tgz";
+        sha512 = "IaaomouKmuCnK+xLuz27X8DQro0ZjVyw4zHvV8HJap9PPDOQKbvpm+UIIsEf0CmC0xWPXIxfFbmlJ0y5CeGlqQ==";
+      };
+    };
     "arconnect-0.2.9" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -1965,6 +2385,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/arconnect/-/arconnect-0.2.9.tgz";
         sha512 = "Us49eN/+8l6BrkAPdXnJVPwWlxxUPR7QaBjA0j3OBAcioIFRpwTdoPN9FxtwDGN91lgM6ebOudTXJToRiNizoA==";
+      };
+    };
+    "arg-4.1.3" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "arg";
+      packageName = "arg";
+      version = "4.1.3";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "arg"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "arg"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/arg/-/arg-4.1.3.tgz";
+        sha512 = "58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==";
       };
     };
     "arweave-1.10.23" = {dependencies ? []}:
@@ -2057,6 +2507,66 @@ let
         sha512 = "+I//4cYPccV8LdmBLiX8CYvf9Sp3vQsrqu2QNXRcrbiWvcx/UdlFiqUJJzxRQxgsZmvhXhn4cSKeSmoFjVdupA==";
       };
     };
+    "async-3.2.3" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "async";
+      packageName = "async";
+      version = "3.2.3";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "async"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "async"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/async/-/async-3.2.3.tgz";
+        sha512 = "spZRyzKL5l5BZQrr/6m/SqFdBN0q3OCI0f9rjfBzCMBIP4p75P620rR3gTmaksNOhmzgdxcaxdNfMy6anrbM0g==";
+      };
+    };
+    "asynckit-0.4.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "asynckit";
+      packageName = "asynckit";
+      version = "0.4.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "asynckit"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "asynckit"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz";
+        sha1 = "c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79";
+      };
+    };
     "available-typed-arrays-1.0.5" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -2087,19 +2597,19 @@ let
         sha512 = "DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==";
       };
     };
-    "avro-js-1.11.0" = {dependencies ? []}:
+    "avsc-5.7.3" = {dependencies ? []}:
 
     stdenv.mkDerivation {
-      name = "avro-js";
-      packageName = "avro-js";
-      version = "1.11.0";
+      name = "avsc";
+      packageName = "avsc";
+      version = "5.7.3";
       extraDependencies = [];
       buildInputs = [
         jq
         nodejs
       ];
       NODE_OPTIONS = "--preserve-symlinks";
-      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "avro-js"; } + '''';
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "avsc"; } + '''';
       patchPhase = ''
                 if [ -f "package.json" ]; then
                   cat <<< $(jq 'del(.scripts)' package.json) > package.json
@@ -2109,12 +2619,12 @@ let
       configurePhase = "true";
       buildPhase = "true";
       fixupPhase = "true";
-      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "avro-js"; };
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "avsc"; };
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/avro-js/-/avro-js-1.11.0.tgz";
-        sha512 = "ndeGph6lECwNvIcpA4YfRxMaZNMR/Eiw+QX77ibxouYm+jC51Ha2aAIxYD6eg1EABlQU5yErprtA+N2YP3G2BQ==";
+        url = "https://registry.npmjs.org/avsc/-/avsc-5.7.3.tgz";
+        sha512 = "uUbetCWczQHbsKyX1C99XpQHBM8SWfovvaZhPIj23/1uV7SQf0WeRZbiLpw0JZm+LHTChfNgrLfDJOVoU2kU+A==";
       };
     };
     "axios-0.21.4" = {dependencies ? []}:
@@ -2807,6 +3317,126 @@ let
         sha1 = "d1dc973920314df67fbeb94223b4ee350239e96b";
       };
     };
+    "color-3.2.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "color";
+      packageName = "color";
+      version = "3.2.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "color"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "color"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/color/-/color-3.2.1.tgz";
+        sha512 = "aBl7dZI9ENN6fUGC7mWpMTPNHmWUSNan9tuWN6ahh5ZLNk9baLJOnSMlrQkHcrfFgz2/RigjUVAjdx36VcemKA==";
+      };
+    };
+    "color-convert-1.9.3" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "color-convert";
+      packageName = "color-convert";
+      version = "1.9.3";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "color-convert"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "color-convert"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz";
+        sha512 = "QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==";
+      };
+    };
+    "color-name-1.1.3" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "color-name";
+      packageName = "color-name";
+      version = "1.1.3";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "color-name"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "color-name"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/color-name/-/color-name-1.1.3.tgz";
+        sha1 = "a7d0558bd89c42f795dd42328f740831ca53bc25";
+      };
+    };
+    "color-string-1.9.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "color-string";
+      packageName = "color-string";
+      version = "1.9.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "color-string"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "color-string"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/color-string/-/color-string-1.9.0.tgz";
+        sha512 = "9Mrz2AQLefkH1UvASKj6v6hj/7eWgjnT/cVsR8CumieLoT+g900exWeNogqtweI8dxloXN9BDQTYro1oWu/5CQ==";
+      };
+    };
     "colorette-2.0.16" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -2835,6 +3465,66 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/colorette/-/colorette-2.0.16.tgz";
         sha512 = "hUewv7oMjCp+wkBv5Rm0v87eJhq4woh5rSR+42YSQJKecCqgIqNkZ6lAlQms/BwHPJA5NKMRlpxPRv0n8HQW6g==";
+      };
+    };
+    "colorspace-1.1.4" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "colorspace";
+      packageName = "colorspace";
+      version = "1.1.4";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "colorspace"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "colorspace"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/colorspace/-/colorspace-1.1.4.tgz";
+        sha512 = "BgvKJiuVu1igBUF2kEjRCZXol6wiiGbY5ipL/oVPwm0BL9sIpMIzM8IK7vwuxIIzOXMV3Ey5w+vxhm0rR/TN8w==";
+      };
+    };
+    "combined-stream-1.0.8" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "combined-stream";
+      packageName = "combined-stream";
+      version = "1.0.8";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "combined-stream"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "combined-stream"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz";
+        sha512 = "FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==";
       };
     };
     "commander-2.20.3" = {dependencies ? []}:
@@ -2897,6 +3587,36 @@ let
         sha512 = "QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==";
       };
     };
+    "component-emitter-1.3.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "component-emitter";
+      packageName = "component-emitter";
+      version = "1.3.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "component-emitter"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "component-emitter"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/component-emitter/-/component-emitter-1.3.0.tgz";
+        sha512 = "Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==";
+      };
+    };
     "concat-map-0.0.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -2927,6 +3647,36 @@ let
         sha1 = "d8a96bd77fd68df7793a73036a3ba0d5405d477b";
       };
     };
+    "cookiejar-2.1.3" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "cookiejar";
+      packageName = "cookiejar";
+      version = "2.1.3";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "cookiejar"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "cookiejar"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/cookiejar/-/cookiejar-2.1.3.tgz";
+        sha512 = "JxbCBUdrfr6AQjOXrxoTvAMJO4HBTUIlBzslcJPAz+/KT8yk53fXun51u+RenNYvad/+Vc2DIz5o9UxlCDymFQ==";
+      };
+    };
     "core-util-is-1.0.3" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -2955,6 +3705,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.3.tgz";
         sha512 = "ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==";
+      };
+    };
+    "create-require-1.1.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "create-require";
+      packageName = "create-require";
+      version = "1.1.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "create-require"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "create-require"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/create-require/-/create-require-1.1.1.tgz";
+        sha512 = "dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==";
       };
     };
     "cross-fetch-3.1.5" = {dependencies ? []}:
@@ -3167,6 +3947,66 @@ let
         sha512 = "ReEBKkIfe4ya47wlPYf/gu5ib6yUG0/Aez0JQZQz94kiWtRQvZIQbTiehsnwHvLSWJnQdhVeqYue7Id1dKr0qw==";
       };
     };
+    "delayed-stream-1.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "delayed-stream";
+      packageName = "delayed-stream";
+      version = "1.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "delayed-stream"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "delayed-stream"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz";
+        sha1 = "df3ae199acadfb7d440aaae0b29e2272b24ec619";
+      };
+    };
+    "diff-4.0.2" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "diff";
+      packageName = "diff";
+      version = "4.0.2";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "diff"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "diff"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/diff/-/diff-4.0.2.tgz";
+        sha512 = "58lmxKSA4BNyLz+HHMUzlOEpg09FV+ev6ZMe3vJihgdxzgcwZ8VoEEPmALCZG9LmqfVoNMMKpttIYTVG6uDY7A==";
+      };
+    };
     "elliptic-6.5.4" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -3195,6 +4035,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/elliptic/-/elliptic-6.5.4.tgz";
         sha512 = "iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==";
+      };
+    };
+    "enabled-2.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "enabled";
+      packageName = "enabled";
+      version = "2.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "enabled"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "enabled"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/enabled/-/enabled-2.0.0.tgz";
+        sha512 = "AKrN98kuwOzMIdAizXGI86UFBoo26CL21UM763y1h/GMSJ4/OHU9k2YlsmBpyScFo/wbLzWQJBMCW4+IO3/+OQ==";
       };
     };
     "end-of-stream-1.4.4" = {dependencies ? []}:
@@ -3407,12 +4277,12 @@ let
         sha512 = "U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==";
       };
     };
-    "ethers-5.5.4" = {dependencies ? []}:
+    "ethers-5.6.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "ethers";
       packageName = "ethers";
-      version = "5.5.4";
+      version = "5.6.1";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -3433,8 +4303,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/ethers/-/ethers-5.5.4.tgz";
-        sha512 = "N9IAXsF8iKhgHIC6pquzRgPBJEzc9auw3JoRkaKe+y4Wl/LFBtDDunNe7YmdomontECAcC5APaAgWZBiu1kirw==";
+        url = "https://registry.npmjs.org/ethers/-/ethers-5.6.1.tgz";
+        sha512 = "qtl/2W+dwmUa5Z3JqwsbV3JEBZZHNARe5K/A2ePcNAuhJYnEKIgGOT/O9ouPwBijSqVoQnmQMzi5D48LFNOY2A==";
       };
     };
     "eventemitter3-4.0.7" = {dependencies ? []}:
@@ -3557,12 +4427,102 @@ let
         sha1 = "62cf120234c683785d902348a800ef3e0cc20bc0";
       };
     };
-    "follow-redirects-1.14.8" = {dependencies ? []}:
+    "fast-safe-stringify-2.1.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "fast-safe-stringify";
+      packageName = "fast-safe-stringify";
+      version = "2.1.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "fast-safe-stringify"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "fast-safe-stringify"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/fast-safe-stringify/-/fast-safe-stringify-2.1.1.tgz";
+        sha512 = "W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==";
+      };
+    };
+    "fecha-4.2.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "fecha";
+      packageName = "fecha";
+      version = "4.2.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "fecha"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "fecha"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/fecha/-/fecha-4.2.1.tgz";
+        sha512 = "MMMQ0ludy/nBs1/o0zVOiKTpG7qMbonKUzjJgQFEuvq6INZ1OraKPRAWkBq5vlKLOUMpmNYG1JoN3oDPUQ9m3Q==";
+      };
+    };
+    "fn.name-1.1.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "fn.name";
+      packageName = "fn.name";
+      version = "1.1.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "fn.name"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "fn.name"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/fn.name/-/fn.name-1.1.0.tgz";
+        sha512 = "GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==";
+      };
+    };
+    "follow-redirects-1.14.9" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "follow-redirects";
       packageName = "follow-redirects";
-      version = "1.14.8";
+      version = "1.14.9";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -3583,8 +4543,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.8.tgz";
-        sha512 = "1x0S9UVJHsQprFcEC/qnNzBLcIxsjAV905f/UkQxbclCsoTWlacCNOpQa/anodLl2uaEKFhfWOvM2Qg77+15zA==";
+        url = "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz";
+        sha512 = "MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==";
       };
     };
     "foreach-2.0.5" = {dependencies ? []}:
@@ -3617,6 +4577,36 @@ let
         sha1 = "0bee005018aeb260d0a3af3ae658dd0136ec1b99";
       };
     };
+    "form-data-3.0.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "form-data";
+      packageName = "form-data";
+      version = "3.0.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "form-data"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "form-data"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/form-data/-/form-data-3.0.1.tgz";
+        sha512 = "RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==";
+      };
+    };
     "form-data-encoder-1.7.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -3645,6 +4635,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/form-data-encoder/-/form-data-encoder-1.7.1.tgz";
         sha512 = "EFRDrsMm/kyqbTQocNvRXMLjc7Es2Vk+IQFx/YW7hkUH1eBl4J1fqiP34l74Yt0pFLCNpc06fkbVk00008mzjg==";
+      };
+    };
+    "formidable-1.2.6" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "formidable";
+      packageName = "formidable";
+      version = "1.2.6";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "formidable"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "formidable"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/formidable/-/formidable-1.2.6.tgz";
+        sha512 = "KcpbcpuLNOwrEjnbpMC0gS+X8ciDoZE1kkqzat4a8vrprf+s9pKNQ/QIwWfbfs4ltgmFl3MD177SNTkve3BwGQ==";
       };
     };
     "fs.realpath-1.0.0" = {dependencies ? []}:
@@ -4037,6 +5057,36 @@ let
         sha512 = "taOaskGt4z4SOANNseOviYDvjEJinIkRgmp7LbKP2YTTmVxWBl87s/uzK9r+44BclBSp2X7K1hqeNfz9JbBeXA==";
       };
     };
+    "hi-base32-0.5.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "hi-base32";
+      packageName = "hi-base32";
+      version = "0.5.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "hi-base32"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "hi-base32"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/hi-base32/-/hi-base32-0.5.1.tgz";
+        sha512 = "EmBBpvdYh/4XxsnUybsPag6VikPYnN30td+vQk+GI3qpahVEG9+gTkG0aXVxTjBqQ5T6ijbWIu77O+C5WFWsnA==";
+      };
+    };
     "hmac-drbg-1.0.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -4337,6 +5387,36 @@ let
         sha512 = "8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==";
       };
     };
+    "is-arrayish-0.3.2" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "is-arrayish";
+      packageName = "is-arrayish";
+      version = "0.3.2";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "is-arrayish"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "is-arrayish"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/is-arrayish/-/is-arrayish-0.3.2.tgz";
+        sha512 = "eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==";
+      };
+    };
     "is-bigint-1.0.4" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -4427,12 +5507,12 @@ let
         sha512 = "nsuwtxZfMX67Oryl9LCQ+upnC0Z0BgpwntpS89m1H/TLF0zNfzfLMV/9Wa/6MZsj0acpEjAO0KF1xT6ZdLl95w==";
       };
     };
-    "is-core-module-2.8.0" = {dependencies ? []}:
+    "is-core-module-2.8.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "is-core-module";
       packageName = "is-core-module";
-      version = "2.8.0";
+      version = "2.8.1";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -4453,8 +5533,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/is-core-module/-/is-core-module-2.8.0.tgz";
-        sha512 = "vd15qHsaqrRL7dtH6QNuy0ndJmRDrS9HAM1CAiSifNUFv4x1a0CCVsj18hJ1mShxIG6T2i1sO78MkP56r0nYRw==";
+        url = "https://registry.npmjs.org/is-core-module/-/is-core-module-2.8.1.tgz";
+        sha512 = "SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==";
       };
     };
     "is-date-object-1.0.5" = {dependencies ? []}:
@@ -4635,6 +5715,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/is-shared-array-buffer/-/is-shared-array-buffer-1.0.1.tgz";
         sha512 = "IU0NmyknYZN0rChcKhRO1X8LYz5Isj/Fsqh8NJOSf+N/hCOTwy29F32Ik7a+QszE63IdvmwdTPDd6cZ5pg4cwA==";
+      };
+    };
+    "is-stream-2.0.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "is-stream";
+      packageName = "is-stream";
+      version = "2.0.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "is-stream"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "is-stream"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/is-stream/-/is-stream-2.0.1.tgz";
+        sha512 = "hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==";
       };
     };
     "is-string-1.0.7" = {dependencies ? []}:
@@ -4847,12 +5957,12 @@ let
         sha512 = "f71uvrAWTtrwoww6MKcl9phQTC+56AopLyEenWvKVAIMz+q0oVGj6tenLZ7Z6UiPBkJtKLj4kt0tACllFQruGQ==";
       };
     };
-    "jmespath-0.15.0" = {dependencies ? []}:
+    "jmespath-0.16.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "jmespath";
       packageName = "jmespath";
-      version = "0.15.0";
+      version = "0.16.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -4873,8 +5983,38 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/jmespath/-/jmespath-0.15.0.tgz";
-        sha1 = "a3f222a9aae9f966f5d27c796510e28091764217";
+        url = "https://registry.npmjs.org/jmespath/-/jmespath-0.16.0.tgz";
+        sha512 = "9FzQjJ7MATs1tSpnco1K6ayiYE3figslrXA72G2HQ/n76RzvYlofyi5QM+iX4YRs/pu3yzxlVQSST23+dMDknw==";
+      };
+    };
+    "js-sha256-0.9.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "js-sha256";
+      packageName = "js-sha256";
+      version = "0.9.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "js-sha256"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "js-sha256"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/js-sha256/-/js-sha256-0.9.0.tgz";
+        sha512 = "sga3MHh9sgQN2+pJ9VYZ+1LPwXOxuBJBA5nrR5/ofPfuiJBE2hnjsaN8se8JznOmGLN2p49Pe5U/ttafcs/apA==";
       };
     };
     "js-sha3-0.8.0" = {dependencies ? []}:
@@ -4905,6 +6045,66 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/js-sha3/-/js-sha3-0.8.0.tgz";
         sha512 = "gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==";
+      };
+    };
+    "js-sha512-0.8.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "js-sha512";
+      packageName = "js-sha512";
+      version = "0.8.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "js-sha512"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "js-sha512"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/js-sha512/-/js-sha512-0.8.0.tgz";
+        sha512 = "PWsmefG6Jkodqt+ePTvBZCSMFgN7Clckjd0O7su3I0+BW2QWUTJNzjktHsztGLhncP2h8mcF9V9Y2Ha59pAViQ==";
+      };
+    };
+    "json-bigint-1.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "json-bigint";
+      packageName = "json-bigint";
+      version = "1.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "json-bigint"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "json-bigint"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/json-bigint/-/json-bigint-1.0.0.tgz";
+        sha512 = "SiPv/8VpZuWbvLSMtTDU8hEfrZWg/mH/nV/b4o0CYbSxu1UIQPLdwKOCIyLQX+VIPO5vrLX3i8qtqFyhdPSUSQ==";
       };
     };
     "json-buffer-3.0.1" = {dependencies ? []}:
@@ -5027,42 +6227,12 @@ let
         sha512 = "PyKKjkH53wDMLGrvmRGSNWgmSxZOUqbnXwKL9tmgbFYA1iAYqW21kfR7mZXV0MlESiefxQQE9X9fTa3X+2MPDQ==";
       };
     };
-    "keccak256-1.0.6" = {dependencies ? []}:
-
-    stdenv.mkDerivation {
-      name = "keccak256";
-      packageName = "keccak256";
-      version = "1.0.6";
-      extraDependencies = [];
-      buildInputs = [
-        jq
-        nodejs
-      ];
-      NODE_OPTIONS = "--preserve-symlinks";
-      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "keccak256"; } + '''';
-      patchPhase = ''
-                if [ -f "package.json" ]; then
-                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
-                fi
-                
-              '';
-      configurePhase = "true";
-      buildPhase = "true";
-      fixupPhase = "true";
-      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "keccak256"; };
-      doCheck = false;
-      doInstallCheck = false;
-      src = fetchurl {
-        url = "https://registry.npmjs.org/keccak256/-/keccak256-1.0.6.tgz";
-        sha512 = "8GLiM01PkdJVGUhR1e6M/AvWnSqYS0HaERI+K/QtStGDGlSTx2B1zTqZk4Zlqu5TxHJNTxWAdP9Y+WI50OApUw==";
-      };
-    };
-    "keyv-4.0.4" = {dependencies ? []}:
+    "keyv-4.1.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "keyv";
       packageName = "keyv";
-      version = "4.0.4";
+      version = "4.1.1";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -5083,8 +6253,38 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/keyv/-/keyv-4.0.4.tgz";
-        sha512 = "vqNHbAc8BBsxk+7QBYLW0Y219rWcClspR6WSeoHYKG5mnsSoOH+BL1pWq02DDCVdvvuUny5rkBlzMRzoqc+GIg==";
+        url = "https://registry.npmjs.org/keyv/-/keyv-4.1.1.tgz";
+        sha512 = "tGv1yP6snQVDSM4X6yxrv2zzq/EvpW+oYiUz6aueW1u9CtS8RzUQYxxmFwgZlO2jSgCxQbchhxaqXXp2hnKGpQ==";
+      };
+    };
+    "kuler-2.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "kuler";
+      packageName = "kuler";
+      version = "2.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "kuler"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "kuler"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/kuler/-/kuler-2.0.0.tgz";
+        sha512 = "Xq9nH7KlWZmXAtodXDDRE7vs6DU1gTU8zYDHDiWLSip45Egwq3plLHzPn27NgvzL2r1LMPC1vdqh98sQxtqj4A==";
       };
     };
     "lodash-4.17.21" = {dependencies ? []}:
@@ -5115,6 +6315,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz";
         sha512 = "v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==";
+      };
+    };
+    "logform-2.4.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "logform";
+      packageName = "logform";
+      version = "2.4.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "logform"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "logform"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/logform/-/logform-2.4.0.tgz";
+        sha512 = "CPSJw4ftjf517EhXZGGvTHHkYobo7ZCc0kvwUoOYcjfR2UVrI66RHj8MCrfAdEitdmFqbu2BYdYs8FHHZSb6iw==";
       };
     };
     "lowercase-keys-2.0.0" = {dependencies ? []}:
@@ -5175,6 +6405,186 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/lowercase-keys/-/lowercase-keys-3.0.0.tgz";
         sha512 = "ozCC6gdQ+glXOQsveKD0YsDy8DSQFjDTz4zyzEHNV5+JP5D62LmfDZ6o1cycFx9ouG940M5dE8C8CTewdj2YWQ==";
+      };
+    };
+    "lru-cache-6.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "lru-cache";
+      packageName = "lru-cache";
+      version = "6.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "lru-cache"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "lru-cache"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/lru-cache/-/lru-cache-6.0.0.tgz";
+        sha512 = "Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==";
+      };
+    };
+    "make-error-1.3.6" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "make-error";
+      packageName = "make-error";
+      version = "1.3.6";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "make-error"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "make-error"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/make-error/-/make-error-1.3.6.tgz";
+        sha512 = "s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==";
+      };
+    };
+    "methods-1.1.2" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "methods";
+      packageName = "methods";
+      version = "1.1.2";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "methods"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "methods"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/methods/-/methods-1.1.2.tgz";
+        sha1 = "5529a4d67654134edcc5266656835b0f851afcee";
+      };
+    };
+    "mime-2.6.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "mime";
+      packageName = "mime";
+      version = "2.6.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "mime"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "mime"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/mime/-/mime-2.6.0.tgz";
+        sha512 = "USPkMeET31rOMiarsBNIHZKLGgvKc/LrjofAnBlOttf5ajRvqiRA8QsenbcooctK6d6Ts6aqZXBA+XbkKthiQg==";
+      };
+    };
+    "mime-db-1.51.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "mime-db";
+      packageName = "mime-db";
+      version = "1.51.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "mime-db"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "mime-db"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/mime-db/-/mime-db-1.51.0.tgz";
+        sha512 = "5y8A56jg7XVQx2mbv1lu49NR4dokRnhZYTtL+KGfaa27uq4pSTXkwQkFJl4pkRMyNFz/EtYDSkiiEHx3F7UN6g==";
+      };
+    };
+    "mime-types-2.1.34" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "mime-types";
+      packageName = "mime-types";
+      version = "2.1.34";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "mime-types"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "mime-types"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/mime-types/-/mime-types-2.1.34.tgz";
+        sha512 = "6cP692WwGIs9XXdOO4++N+7qjqv0rqxxVvJ3VHPh/Sc9mVZcQP+ZGhkKiTvWMQRr2tbHkJP/Yn7Y0npb3ZBs4A==";
       };
     };
     "mimic-response-1.0.1" = {dependencies ? []}:
@@ -5297,12 +6707,12 @@ let
         sha1 = "f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a";
       };
     };
-    "minimatch-3.0.4" = {dependencies ? []}:
+    "minimatch-3.1.2" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "minimatch";
       packageName = "minimatch";
-      version = "3.0.4";
+      version = "3.1.2";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -5323,8 +6733,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz";
-        sha512 = "yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==";
+        url = "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz";
+        sha512 = "J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==";
       };
     };
     "ms-2.1.2" = {dependencies ? []}:
@@ -5355,6 +6765,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz";
         sha512 = "sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==";
+      };
+    };
+    "ms-2.1.3" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "ms";
+      packageName = "ms";
+      version = "2.1.3";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "ms"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "ms"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz";
+        sha512 = "6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==";
       };
     };
     "multistream-4.1.0" = {dependencies ? []}:
@@ -5665,6 +7105,36 @@ let
         sha1 = "583b1aa775961d4b113ac17d9c50baef9dd76bd1";
       };
     };
+    "one-time-1.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "one-time";
+      packageName = "one-time";
+      version = "1.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "one-time"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "one-time"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/one-time/-/one-time-1.0.0.tgz";
+        sha512 = "5DXOiRKwuSEcQ/l0kGCF6Q3jcADFv5tSmRaJck/OqkVFcOzutB134KRSfF0xDrL39MNnqxbHBbUUcjZIhTgb2g==";
+      };
+    };
     "p-cancelable-3.0.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -5875,12 +7345,12 @@ let
         sha512 = "WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==";
       };
     };
-    "pg-pool-3.4.1" = {dependencies ? []}:
+    "pg-pool-3.5.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "pg-pool";
       packageName = "pg-pool";
-      version = "3.4.1";
+      version = "3.5.1";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -5901,8 +7371,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/pg-pool/-/pg-pool-3.4.1.tgz";
-        sha512 = "TVHxR/gf3MeJRvchgNHxsYsTCHQ+4wm3VIHSS19z8NC0+gioEhq1okDY1sm/TYbfoP6JLFx01s0ShvZ3puP/iQ==";
+        url = "https://registry.npmjs.org/pg-pool/-/pg-pool-3.5.1.tgz";
+        sha512 = "6iCR0wVrro6OOHFsyavV+i6KYL4lVNyYAB9RD18w66xSzN+d8b66HiwuP30Gp1SH5O9T82fckkzsRjlrhD0ioQ==";
       };
     };
     "pg-protocol-1.5.0" = {dependencies ? []}:
@@ -6235,6 +7705,36 @@ let
         sha1 = "9653a036fb7c1ee42342f2325cceefea3926c48d";
       };
     };
+    "qs-6.10.3" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "qs";
+      packageName = "qs";
+      version = "6.10.3";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "qs"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "qs"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/qs/-/qs-6.10.3.tgz";
+        sha512 = "wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==";
+      };
+    };
     "querystring-0.2.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -6263,6 +7763,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz";
         sha1 = "b209849203bb25df820da756e747005878521620";
+      };
+    };
+    "querystringify-2.2.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "querystringify";
+      packageName = "querystringify";
+      version = "2.2.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "querystringify"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "querystringify"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/querystringify/-/querystringify-2.2.0.tgz";
+        sha512 = "FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==";
       };
     };
     "quick-lru-5.1.1" = {dependencies ? []}:
@@ -6415,12 +7945,42 @@ let
         sha512 = "p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==";
       };
     };
-    "resolve-1.20.0" = {dependencies ? []}:
+    "requires-port-1.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "requires-port";
+      packageName = "requires-port";
+      version = "1.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "requires-port"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "requires-port"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/requires-port/-/requires-port-1.0.0.tgz";
+        sha1 = "925d2601d39ac485e091cf0da5c6e694dc3dcaff";
+      };
+    };
+    "resolve-1.22.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "resolve";
       packageName = "resolve";
-      version = "1.20.0";
+      version = "1.22.0";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -6441,8 +8001,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/resolve/-/resolve-1.20.0.tgz";
-        sha512 = "wENBPt4ySzg4ybFQW2TT1zMQucPK95HSh/nq2CFTZVOGut2+pQvSsgtda4d26YrYcr067wjbmzOG8byDPBX63A==";
+        url = "https://registry.npmjs.org/resolve/-/resolve-1.22.0.tgz";
+        sha512 = "Hhtrw0nLeSrFQ7phPp4OOcVjLPIeMnRlr5mcnVuMe7M/7eBn98A3hmFRLoFo3DLZkivSYwhRUJTyPyWAk56WLw==";
       };
     };
     "resolve-alpn-1.2.1" = {dependencies ? []}:
@@ -6685,6 +8245,36 @@ let
         sha512 = "rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==";
       };
     };
+    "safe-stable-stringify-2.3.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "safe-stable-stringify";
+      packageName = "safe-stable-stringify";
+      version = "2.3.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "safe-stable-stringify"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "safe-stable-stringify"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/safe-stable-stringify/-/safe-stable-stringify-2.3.1.tgz";
+        sha512 = "kYBSfT+troD9cDA85VDnHZ1rpHC50O0g1e6WlGHVCz/g+JS+9WKLj+XwFYyR8UbrZN8ll9HUpDAAddY58MGisg==";
+      };
+    };
     "safer-buffer-2.1.2" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -6805,6 +8395,36 @@ let
         sha512 = "NLZVf+ROMxwtEj3Xa562qgv2BK5e2WNmXPiOdVIPLgs6lyTzMvBq0aWTYMI5XCP9jZMVKOcqZLw/Wc4vDkuxhA==";
       };
     };
+    "semver-7.3.5" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "semver";
+      packageName = "semver";
+      version = "7.3.5";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "semver"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "semver"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/semver/-/semver-7.3.5.tgz";
+        sha512 = "PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==";
+      };
+    };
     "side-channel-1.0.4" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -6835,6 +8455,36 @@ let
         sha512 = "q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==";
       };
     };
+    "simple-swizzle-0.2.2" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "simple-swizzle";
+      packageName = "simple-swizzle";
+      version = "0.2.2";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "simple-swizzle"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "simple-swizzle"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/simple-swizzle/-/simple-swizzle-0.2.2.tgz";
+        sha1 = "a4da6b635ffcccca33f70d17cb92592de95e557a";
+      };
+    };
     "split2-4.1.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -6863,6 +8513,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/split2/-/split2-4.1.0.tgz";
         sha512 = "VBiJxFkxiXRlUIeyMQi8s4hgvKCSjtknJv/LVYbrgALPwf5zSKmEwV9Lst25AkvMDnvxODugjdl6KZgwKM1WYQ==";
+      };
+    };
+    "stack-trace-0.0.10" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "stack-trace";
+      packageName = "stack-trace";
+      version = "0.0.10";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "stack-trace"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "stack-trace"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/stack-trace/-/stack-trace-0.0.10.tgz";
+        sha1 = "547c70b347e8d32b4e108ea1a2a159e5fdde19c0";
       };
     };
     "stream-chunker-1.2.8" = {dependencies ? []}:
@@ -6985,6 +8665,66 @@ let
         sha512 = "n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==";
       };
     };
+    "string_decoder-1.3.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "string_decoder";
+      packageName = "string_decoder";
+      version = "1.3.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "string_decoder"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "string_decoder"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/string_decoder/-/string_decoder-1.3.0.tgz";
+        sha512 = "hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==";
+      };
+    };
+    "superagent-6.1.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "superagent";
+      packageName = "superagent";
+      version = "6.1.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "superagent"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "superagent"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/superagent/-/superagent-6.1.0.tgz";
+        sha512 = "OUDHEssirmplo3F+1HWKUrUjvnQuA+nZI6i/JJBdXb5eq9IyEQwPyPpqND+SSsxf6TygpBEkUjISVRN4/VOpeg==";
+      };
+    };
     "superstruct-0.14.2" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -7013,6 +8753,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/superstruct/-/superstruct-0.14.2.tgz";
         sha512 = "nPewA6m9mR3d6k7WkZ8N8zpTWfenFH3q9pA2PkuiZxINr9DKB2+40wEQf0ixn8VaGuJ78AB6iWOtStI+/4FKZQ==";
+      };
+    };
+    "supports-preserve-symlinks-flag-1.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "supports-preserve-symlinks-flag";
+      packageName = "supports-preserve-symlinks-flag";
+      version = "1.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "supports-preserve-symlinks-flag"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "supports-preserve-symlinks-flag"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz";
+        sha512 = "ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==";
       };
     };
     "tarn-3.0.2" = {dependencies ? []}:
@@ -7073,6 +8843,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/text-encoding-utf-8/-/text-encoding-utf-8-1.0.2.tgz";
         sha512 = "8bw4MY9WjdsD2aMtO0OzOCY3pXGYNx2d2FfHRVUKkiCPDWjKuOlhLVASS+pD7VkLTVjW268LYJHwsnPFlBpbAg==";
+      };
+    };
+    "text-hex-1.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "text-hex";
+      packageName = "text-hex";
+      version = "1.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "text-hex"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "text-hex"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/text-hex/-/text-hex-1.0.0.tgz";
+        sha512 = "uuVGNWzgJ4yhRaNSiubPY7OjISw4sw4E5Uv0wbjp+OzcbmVU/rsT8ujgcXJhn9ypzsgr5vlzpPqP+MBBKcGvbg==";
       };
     };
     "through-2.3.8" = {dependencies ? []}:
@@ -7255,6 +9055,66 @@ let
         sha1 = "8184fd347dac9cdc185992f3a6622e14b9d9ab6a";
       };
     };
+    "triple-beam-1.3.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "triple-beam";
+      packageName = "triple-beam";
+      version = "1.3.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "triple-beam"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "triple-beam"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/triple-beam/-/triple-beam-1.3.0.tgz";
+        sha512 = "XrHUvV5HpdLmIj4uVMxHggLbFSZYIn7HEWsqePZcI50pco+MPqJ50wMGY794X7AOOhxOBAjbkqfAbEe/QMp2Lw==";
+      };
+    };
+    "ts-node-10.7.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "ts-node";
+      packageName = "ts-node";
+      version = "10.7.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "ts-node"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "ts-node"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/ts-node/-/ts-node-10.7.0.tgz";
+        sha512 = "TbIGS4xgJoX2i3do417KSaep1uRAW/Lu+WAL2doDHC0D6ummjirVOXU5/7aiZotbQ5p1Zp9tP7U6cYhA0O7M8A==";
+      };
+    };
     "tslib-2.3.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -7345,36 +9205,6 @@ let
         sha512 = "tZU/3NqK3dA5gpE1KtyiJUrEB0lxnGkMFHptJ7q6ewdZ8s12QrODwNbhIJStmJkd1QDXa1NRA8aF2A1zk/Ypyw==";
       };
     };
-    "underscore-1.13.2" = {dependencies ? []}:
-
-    stdenv.mkDerivation {
-      name = "underscore";
-      packageName = "underscore";
-      version = "1.13.2";
-      extraDependencies = [];
-      buildInputs = [
-        jq
-        nodejs
-      ];
-      NODE_OPTIONS = "--preserve-symlinks";
-      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "underscore"; } + '''';
-      patchPhase = ''
-                if [ -f "package.json" ]; then
-                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
-                fi
-                
-              '';
-      configurePhase = "true";
-      buildPhase = "true";
-      fixupPhase = "true";
-      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "underscore"; };
-      doCheck = false;
-      doInstallCheck = false;
-      src = fetchurl {
-        url = "https://registry.npmjs.org/underscore/-/underscore-1.13.2.tgz";
-        sha512 = "ekY1NhRzq0B08g4bGuX4wd2jZx5GnKz6mKSqFL4nqBlfyMGiG10gDFhDTMEfYmDL6Jy0FUIZp7wiRB+0BP7J2g==";
-      };
-    };
     "url-0.10.3" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -7403,6 +9233,36 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/url/-/url-0.10.3.tgz";
         sha1 = "021e4d9c7705f21bbf37d03ceb58767402774c64";
+      };
+    };
+    "url-parse-1.5.10" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "url-parse";
+      packageName = "url-parse";
+      version = "1.5.10";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "url-parse"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "url-parse"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/url-parse/-/url-parse-1.5.10.tgz";
+        sha512 = "WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==";
       };
     };
     "util-0.12.4" = {dependencies ? []}:
@@ -7525,6 +9385,36 @@ let
         sha512 = "+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==";
       };
     };
+    "v8-compile-cache-lib-3.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "v8-compile-cache-lib";
+      packageName = "v8-compile-cache-lib";
+      version = "3.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "v8-compile-cache-lib"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "v8-compile-cache-lib"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.0.tgz";
+        sha512 = "mpSYqfsFvASnSn5qMiwrr4VKfumbPyONLCOPmsR3A6pTY/r0+tSaVbgPWSAIuzbk3lCTa+FForeTiO+wBQGkjA==";
+      };
+    };
     "webidl-conversions-3.0.1" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -7645,6 +9535,36 @@ let
         sha512 = "vjxaB4nfDqwKI0ws7wZpxIlde1XrLX5uB0ZjpfshgmapJMD7jJWhZI+yToJTqaFByF0eNBcYxbjmCzoRP7CfEw==";
       };
     };
+    "winston-transport-4.5.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "winston-transport";
+      packageName = "winston-transport";
+      version = "4.5.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "winston-transport"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "winston-transport"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/winston-transport/-/winston-transport-4.5.0.tgz";
+        sha512 = "YpZzcUzBedhlTAfJg6vJDlyEai/IFMIVcaEZZyl3UXIl4gmqRpU7AE89AHLkbzLUsv0NVmw7ts+iztqKxxPW1Q==";
+      };
+    };
     "wrappy-1.0.2" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -7705,12 +9625,12 @@ let
         sha512 = "YmhHDO4MzaDLB+M9ym/mDA5z0naX8j7SIlT8f8z+I0VtzsRbekxEutHSme7NPS2qE8StCYQNUnfWdXta/Yu85A==";
       };
     };
-    "ws-7.5.6" = {dependencies ? []}:
+    "ws-7.5.7" = {dependencies ? []}:
 
     stdenv.mkDerivation {
       name = "ws";
       packageName = "ws";
-      version = "7.5.6";
+      version = "7.5.7";
       extraDependencies = [];
       buildInputs = [
         jq
@@ -7731,8 +9651,8 @@ let
       doCheck = false;
       doInstallCheck = false;
       src = fetchurl {
-        url = "https://registry.npmjs.org/ws/-/ws-7.5.6.tgz";
-        sha512 = "6GLgCqo2cy2A2rjCNFlxQS6ZljG/coZfZXclldI8FB/1G3CCI36Zd8xy2HrFVACi8tfk5XrgLQEk+P0Tnz9UcA==";
+        url = "https://registry.npmjs.org/ws/-/ws-7.5.7.tgz";
+        sha512 = "KMvVuFzpKBuiIXW3E4u3mySRO2/mCHSyZDJQM5NQ9Q9KHWHWh0NHgfbRMLLrceUK5qAL4ytALJbpRMjixFZh8A==";
       };
     };
     "xml2js-0.4.19" = {dependencies ? []}:
@@ -7825,6 +9745,66 @@ let
         sha512 = "LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==";
       };
     };
+    "yallist-4.0.0" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "yallist";
+      packageName = "yallist";
+      version = "4.0.0";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "yallist"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "yallist"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz";
+        sha512 = "3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==";
+      };
+    };
+    "yn-3.1.1" = {dependencies ? []}:
+
+    stdenv.mkDerivation {
+      name = "yn";
+      packageName = "yn";
+      version = "3.1.1";
+      extraDependencies = [];
+      buildInputs = [
+        jq
+        nodejs
+      ];
+      NODE_OPTIONS = "--preserve-symlinks";
+      unpackPhase = transitiveDepUnpackPhase { inherit dependencies; pkgName = "yn"; } + '''';
+      patchPhase = ''
+                if [ -f "package.json" ]; then
+                  cat <<< $(jq 'del(.scripts)' package.json) > package.json
+                fi
+                
+              '';
+      configurePhase = "true";
+      buildPhase = "true";
+      fixupPhase = "true";
+      installPhase = transitiveDepInstallPhase { inherit dependencies; pkgName = "yn"; };
+      doCheck = false;
+      doInstallCheck = false;
+      src = fetchurl {
+        url = "https://registry.npmjs.org/yn/-/yn-3.1.1.tgz";
+        sha512 = "Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==";
+      };
+    };
     "yocto-queue-1.0.0" = {dependencies ? []}:
 
     stdenv.mkDerivation {
@@ -7898,10 +9878,10 @@ let
       inherit dependencies extraDependencies;
       name = "arbundles";
       packageName = "arbundles";
-      version = "0.6.13";
+      version = "0.6.16";
       src = fetchurl {
-        url = "https://registry.npmjs.org/arbundles/-/arbundles-0.6.13.tgz";
-        sha512 = "jJdUOYFzSu4H7Fv9XjSIIV7rBbrijjryw6eHZgSvZydWbuqQCE9gGfjPi0Igw4j7shydp3VzhlbRYwGVGpGEuQ==";
+        url = "https://registry.npmjs.org/arbundles/-/arbundles-0.6.16.tgz";
+        sha512 = "c5IwwHTSE2SNi+/Zd/BqK3ci3367AqACVnuV1u04NoEZ+czD02MtmgTzQ35wxSR+P6oeYNp5+nL4XwxlMtljiQ==";
       };
       buildInputs = [ nodejs python3 makeWrapper jq  ] ++
          (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xcodebuild ]) ++
@@ -8034,10 +10014,10 @@ let
       inherit dependencies extraDependencies;
       name = "aws-sdk";
       packageName = "aws-sdk";
-      version = "2.1047.0";
+      version = "2.1082.0";
       src = fetchurl {
-        url = "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1047.0.tgz";
-        sha512 = "aZg6HzcwgRpXLi8HnpwBwK+NTXlWPjLSChvdeJ+/IE9912aoAKyaV+Ydo+9h6XH0cQhkvZ2u3pFINWZVbwo+TA==";
+        url = "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1082.0.tgz";
+        sha512 = "aDrUZ63O/ocuC827ursDqFQAm3jhqsJu1DvMCCFg73y+FK9pXXNHp2mwdi3UeeHvtfxISCLCjuyO3VFd/tpVfA==";
       };
       buildInputs = [ nodejs python3 makeWrapper jq  ] ++
          (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xcodebuild ]) ++
@@ -8238,10 +10218,10 @@ let
       inherit dependencies extraDependencies;
       name = "got";
       packageName = "got";
-      version = "12.0.0";
+      version = "12.0.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/got/-/got-12.0.0.tgz";
-        sha512 = "gNNNghQ1yw0hyzie1FLK6gY90BQlXU9zSByyRygnbomHPruKQ6hAKKbpO1RfNZp8b+qNzNipGeRG3tUelKcVsA==";
+        url = "https://registry.npmjs.org/got/-/got-12.0.1.tgz";
+        sha512 = "1Zhoh+lDej3t7Ks1BP/Jufn+rNqdiHQgUOcTxHzg2Dao1LQfp5S4Iq0T3iBxN4Zdo7QqCJL+WJUNzDX6rCP2Ew==";
       };
       buildInputs = [ nodejs python3 makeWrapper jq  ] ++
          (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xcodebuild ]) ++
@@ -8714,10 +10694,10 @@ let
       inherit dependencies extraDependencies;
       name = "pg";
       packageName = "pg";
-      version = "8.7.1";
+      version = "8.7.3";
       src = fetchurl {
-        url = "https://registry.npmjs.org/pg/-/pg-8.7.1.tgz";
-        sha512 = "7bdYcv7V6U3KAtWjpQJJBww0UEsWuh4yQ/EjNf2HeO/NnvKjpvhEIe/A/TleP6wtmSKnUnghs5A9jUoK6iDdkA==";
+        url = "https://registry.npmjs.org/pg/-/pg-8.7.3.tgz";
+        sha512 = "HPmH4GH4H3AOprDJOazoIcpI49XFsHCe8xlrjHkWiapdbHK+HLtbm/GQzXYAZwmPju/kzKhjaSfMACG+8cgJcw==";
       };
       buildInputs = [ nodejs python3 makeWrapper jq  ] ++
          (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xcodebuild ]) ++
@@ -8782,10 +10762,10 @@ let
       inherit dependencies extraDependencies;
       name = "ramda";
       packageName = "ramda";
-      version = "0.27.1";
+      version = "0.27.2";
       src = fetchurl {
-        url = "https://registry.npmjs.org/ramda/-/ramda-0.27.1.tgz";
-        sha512 = "PgIdVpn5y5Yns8vqb8FzBUEYn98V3xcPgawAkkgj0YJ0qDsnHCiNmZYfOGMgOvoB0eWFLpYbhxUR3mxfDIMvpw==";
+        url = "https://registry.npmjs.org/ramda/-/ramda-0.27.2.tgz";
+        sha512 = "SbiLPU40JuJniHexQSAgad32hfwd+DRUdwF2PlVuI5RZD0/vahUco7R8vD86J/tcEKKF9vZrUVwgtmGCqlCKyA==";
       };
       buildInputs = [ nodejs python3 makeWrapper jq  ] ++
          (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xcodebuild ]) ++
@@ -8907,111 +10887,191 @@ let
         homepage = "https://github.com/BBC/sqs-consumer";
       };
     };
+    winston = let
+      dependencies = [];
+      extraDependencies = [] ++
+            mkExtraDependencies
+             (pkgs // { inherit jsnixDeps dependencies; })
+             { pkgName = "winston"; };
+    in
+    stdenv.mkDerivation {
+      inherit dependencies extraDependencies;
+      name = "winston";
+      packageName = "winston";
+      version = "3.6.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/winston/-/winston-3.6.0.tgz";
+        sha512 = "9j8T75p+bcN6D00sF/zjFVmPp+t8KMPB1MzbbzYjeN9VWxdsYnTB40TkbNUEXAmILEfChMvAMgidlX64OG3p6w==";
+      };
+      buildInputs = [ nodejs python3 makeWrapper jq  ] ++
+         (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.xcodebuild ]) ++
+         (mkExtraBuildInputs (pkgs // { inherit jsnixDeps dependencies; }) { pkgName = "winston"; });
+      doFixup = false;
+      doStrip = false;
+      NODE_OPTIONS = "--preserve-symlinks";
+      passAsFile = [ "unpackScript" "buildScript" "installScript" ];
+      unpackScript = mkUnpackScript { dependencies = dependencies ++ extraDependencies;
+         pkgName = "winston"; };
+      buildScript = mkBuildScript { inherit dependencies; pkgName = "winston"; };
+      buildPhase = ''
+      source $unpackScriptPath 
+      runHook preBuild
+      if [ -z "$preBuild" ]; then
+        runHook preInstall
+      fi
+      source $buildScriptPath
+      if [ -z "$postBuild" ]; then
+        runHook postBuild
+      fi
+    '';
+      patchPhase = ''
+      if [ -z "$prePatch" ]; then
+        runHook prePatch
+      fi
+      
+      if [ -z "$postPatch" ]; then
+        runHook postPatch
+      fi
+    '';
+      installScript = mkInstallScript { pkgName = "winston"; };
+      installPhase = ''
+      if [ -z "$preInstall" ]; then
+        runHook preInstall
+      fi
+      source $installScriptPath
+      if [ -z "$postInstall" ]; then
+        runHook postInstall
+      fi
+    '';
+      preInstall = (mkPhase (pkgs // { inherit jsnixDeps nodejs dependencies; }) { phase = "preInstall"; pkgName = "winston"; });
+      postInstall = (mkPhase (pkgs // { inherit jsnixDeps nodejs dependencies; }) { phase = "postInstall"; pkgName = "winston"; });
+      preBuild = (mkPhase (pkgs // { inherit jsnixDeps nodejs dependencies; }) { phase = "preBuild"; pkgName = "winston"; });
+      postBuild = (mkPhase (pkgs // { inherit jsnixDeps nodejs dependencies; }) { phase = "postBuild"; pkgName = "winston"; });
+      fixupPhase = "true";
+      installCheckPhase = (mkPhase (pkgs // { inherit jsnixDeps nodejs dependencies; }) { phase = "installCheckPhase"; pkgName = "winston"; });
+      meta = {
+        description = "A logger for just about everything.";
+        license = "MIT";
+        homepage = "https://github.com/winstonjs/winston#readme";
+      };
+    };
   };
   dedupedDeps = {
-    "@babel/runtime" = sources."@babel/runtime-7.16.5" {
+    "@babel/runtime" = sources."@babel/runtime-7.17.2" {
       dependencies = [];
     };
-    "@ethersproject/abi" = sources."@ethersproject/abi-5.5.0" {
+    "@cspotcode/source-map-consumer" = sources."@cspotcode/source-map-consumer-0.8.0" {
       dependencies = [];
     };
-    "@ethersproject/abstract-provider" = sources."@ethersproject/abstract-provider-5.5.1" {
+    "@cspotcode/source-map-support" = sources."@cspotcode/source-map-support-0.7.0" {
       dependencies = [];
     };
-    "@ethersproject/abstract-signer" = sources."@ethersproject/abstract-signer-5.5.0" {
+    "@ethersproject/abi" = sources."@ethersproject/abi-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/address" = sources."@ethersproject/address-5.5.0" {
+    "@ethersproject/abstract-provider" = sources."@ethersproject/abstract-provider-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/base64" = sources."@ethersproject/base64-5.5.0" {
+    "@ethersproject/abstract-signer" = sources."@ethersproject/abstract-signer-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/basex" = sources."@ethersproject/basex-5.5.0" {
+    "@ethersproject/address" = sources."@ethersproject/address-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/bignumber" = sources."@ethersproject/bignumber-5.5.0" {
+    "@ethersproject/base64" = sources."@ethersproject/base64-5.6.0" {
+      dependencies = [];
+    };
+    "@ethersproject/basex" = sources."@ethersproject/basex-5.6.0" {
+      dependencies = [];
+    };
+    "@ethersproject/bignumber" = sources."@ethersproject/bignumber-5.6.0" {
       dependencies = [
         (sources."bn.js-4.12.0" {
           dependencies = [];
         })
       ];
     };
-    "@ethersproject/bytes" = sources."@ethersproject/bytes-5.5.0" {
+    "@ethersproject/bytes" = sources."@ethersproject/bytes-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/constants" = sources."@ethersproject/constants-5.5.0" {
+    "@ethersproject/constants" = sources."@ethersproject/constants-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/contracts" = sources."@ethersproject/contracts-5.5.0" {
+    "@ethersproject/contracts" = sources."@ethersproject/contracts-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/hash" = sources."@ethersproject/hash-5.5.0" {
+    "@ethersproject/hash" = sources."@ethersproject/hash-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/hdnode" = sources."@ethersproject/hdnode-5.5.0" {
+    "@ethersproject/hdnode" = sources."@ethersproject/hdnode-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/json-wallets" = sources."@ethersproject/json-wallets-5.5.0" {
+    "@ethersproject/json-wallets" = sources."@ethersproject/json-wallets-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/keccak256" = sources."@ethersproject/keccak256-5.5.0" {
+    "@ethersproject/keccak256" = sources."@ethersproject/keccak256-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/logger" = sources."@ethersproject/logger-5.5.0" {
+    "@ethersproject/logger" = sources."@ethersproject/logger-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/networks" = sources."@ethersproject/networks-5.5.2" {
+    "@ethersproject/networks" = sources."@ethersproject/networks-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/pbkdf2" = sources."@ethersproject/pbkdf2-5.5.0" {
+    "@ethersproject/pbkdf2" = sources."@ethersproject/pbkdf2-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/properties" = sources."@ethersproject/properties-5.5.0" {
+    "@ethersproject/properties" = sources."@ethersproject/properties-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/providers" = sources."@ethersproject/providers-5.5.3" {
+    "@ethersproject/providers" = sources."@ethersproject/providers-5.6.1" {
       dependencies = [
         (sources."ws-7.4.6" {
           dependencies = [];
         })
       ];
     };
-    "@ethersproject/random" = sources."@ethersproject/random-5.5.1" {
+    "@ethersproject/random" = sources."@ethersproject/random-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/rlp" = sources."@ethersproject/rlp-5.5.0" {
+    "@ethersproject/rlp" = sources."@ethersproject/rlp-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/sha2" = sources."@ethersproject/sha2-5.5.0" {
+    "@ethersproject/sha2" = sources."@ethersproject/sha2-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/signing-key" = sources."@ethersproject/signing-key-5.5.0" {
+    "@ethersproject/signing-key" = sources."@ethersproject/signing-key-5.6.0" {
       dependencies = [
         (sources."bn.js-4.12.0" {
           dependencies = [];
         })
       ];
     };
-    "@ethersproject/solidity" = sources."@ethersproject/solidity-5.5.0" {
+    "@ethersproject/solidity" = sources."@ethersproject/solidity-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/strings" = sources."@ethersproject/strings-5.5.0" {
+    "@ethersproject/strings" = sources."@ethersproject/strings-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/transactions" = sources."@ethersproject/transactions-5.5.0" {
+    "@ethersproject/transactions" = sources."@ethersproject/transactions-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/units" = sources."@ethersproject/units-5.5.0" {
+    "@ethersproject/units" = sources."@ethersproject/units-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/wallet" = sources."@ethersproject/wallet-5.5.0" {
+    "@ethersproject/wallet" = sources."@ethersproject/wallet-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/web" = sources."@ethersproject/web-5.5.1" {
+    "@ethersproject/web" = sources."@ethersproject/web-5.6.0" {
       dependencies = [];
     };
-    "@ethersproject/wordlists" = sources."@ethersproject/wordlists-5.5.0" {
+    "@ethersproject/wordlists" = sources."@ethersproject/wordlists-5.6.0" {
+      dependencies = [];
+    };
+    "@randlabs/communication-bridge" = sources."@randlabs/communication-bridge-1.0.0" {
+      dependencies = [];
+    };
+    "@randlabs/myalgo-connect" = sources."@randlabs/myalgo-connect-1.1.2" {
       dependencies = [];
     };
     "@solana/buffer-layout" = sources."@solana/buffer-layout-3.0.0" {
@@ -9021,10 +11081,22 @@ let
         })
       ];
     };
-    "@solana/wallet-adapter-base" = sources."@solana/wallet-adapter-base-0.9.3" {
+    "@solana/wallet-adapter-base" = sources."@solana/wallet-adapter-base-0.9.5" {
       dependencies = [];
     };
-    "@solana/web3.js" = sources."@solana/web3.js-1.34.0" {
+    "@solana/web3.js" = sources."@solana/web3.js-1.36.0" {
+      dependencies = [];
+    };
+    "@tsconfig/node10" = sources."@tsconfig/node10-1.0.8" {
+      dependencies = [];
+    };
+    "@tsconfig/node12" = sources."@tsconfig/node12-1.0.9" {
+      dependencies = [];
+    };
+    "@tsconfig/node14" = sources."@tsconfig/node14-1.0.1" {
+      dependencies = [];
+    };
+    "@tsconfig/node16" = sources."@tsconfig/node16-1.0.2" {
       dependencies = [];
     };
     "@types/axios" = sources."@types/axios-0.14.0" {
@@ -9039,16 +11111,16 @@ let
     "@types/connect" = sources."@types/connect-3.4.35" {
       dependencies = [];
     };
-    "@types/express-serve-static-core" = sources."@types/express-serve-static-core-4.17.26" {
+    "@types/express-serve-static-core" = sources."@types/express-serve-static-core-4.17.28" {
       dependencies = [];
     };
-    "@types/lodash" = sources."@types/lodash-4.14.178" {
+    "@types/lodash" = sources."@types/lodash-4.14.179" {
       dependencies = [];
     };
     "@types/multistream" = sources."@types/multistream-2.1.2" {
       dependencies = [];
     };
-    "@types/node" = sources."@types/node-17.0.2" {
+    "@types/node" = sources."@types/node-17.0.21" {
       dependencies = [];
     };
     "@types/qs" = sources."@types/qs-6.9.7" {
@@ -9066,10 +11138,29 @@ let
     JSONStream = sources."JSONStream-1.3.5" {
       dependencies = [];
     };
+    acorn = sources."acorn-8.7.0" {
+      dependencies = [];
+    };
+    acorn-walk = sources."acorn-walk-8.2.0" {
+      dependencies = [];
+    };
     aes-js = sources."aes-js-3.0.0" {
       dependencies = [];
     };
+    algo-msgpack-with-bigint = sources."algo-msgpack-with-bigint-2.1.1" {
+      dependencies = [];
+    };
+    algosdk = sources."algosdk-1.14.0" {
+      dependencies = [
+        (sources."buffer-6.0.3" {
+          dependencies = [];
+        })
+      ];
+    };
     arconnect = sources."arconnect-0.2.9" {
+      dependencies = [];
+    };
+    arg = sources."arg-4.1.3" {
       dependencies = [];
     };
     arweave = sources."arweave-1.10.23" {
@@ -9089,10 +11180,13 @@ let
         })
       ];
     };
+    asynckit = sources."asynckit-0.4.0" {
+      dependencies = [];
+    };
     available-typed-arrays = sources."available-typed-arrays-1.0.5" {
       dependencies = [];
     };
-    avro-js = sources."avro-js-1.11.0" {
+    avsc = sources."avsc-5.7.3" {
       dependencies = [];
     };
     axios = sources."axios-0.21.4" {
@@ -9134,13 +11228,25 @@ let
     circular-json = sources."circular-json-0.5.9" {
       dependencies = [];
     };
+    combined-stream = sources."combined-stream-1.0.8" {
+      dependencies = [];
+    };
     commander = sources."commander-2.20.3" {
+      dependencies = [];
+    };
+    component-emitter = sources."component-emitter-1.3.0" {
       dependencies = [];
     };
     concat-map = sources."concat-map-0.0.1" {
       dependencies = [];
     };
+    cookiejar = sources."cookiejar-2.1.3" {
+      dependencies = [];
+    };
     core-util-is = sources."core-util-is-1.0.3" {
+      dependencies = [];
+    };
+    create-require = sources."create-require-1.1.1" {
       dependencies = [];
     };
     cross-fetch = sources."cross-fetch-3.1.5" {
@@ -9150,6 +11256,12 @@ let
       dependencies = [];
     };
     delay = sources."delay-5.0.0" {
+      dependencies = [];
+    };
+    delayed-stream = sources."delayed-stream-1.0.0" {
+      dependencies = [];
+    };
+    diff = sources."diff-4.0.2" {
       dependencies = [];
     };
     elliptic = sources."elliptic-6.5.4" {
@@ -9171,7 +11283,7 @@ let
     es6-promisify = sources."es6-promisify-5.0.0" {
       dependencies = [];
     };
-    ethers = sources."ethers-5.5.4" {
+    ethers = sources."ethers-5.6.1" {
       dependencies = [];
     };
     eventemitter3 = sources."eventemitter3-4.0.7" {
@@ -9183,10 +11295,19 @@ let
     eyes = sources."eyes-0.1.8" {
       dependencies = [];
     };
-    follow-redirects = sources."follow-redirects-1.14.8" {
+    fast-safe-stringify = sources."fast-safe-stringify-2.1.1" {
+      dependencies = [];
+    };
+    follow-redirects = sources."follow-redirects-1.14.9" {
       dependencies = [];
     };
     foreach = sources."foreach-2.0.5" {
+      dependencies = [];
+    };
+    form-data = sources."form-data-3.0.1" {
+      dependencies = [];
+    };
+    formidable = sources."formidable-1.2.6" {
       dependencies = [];
     };
     "fs.realpath" = sources."fs.realpath-1.0.0" {
@@ -9217,6 +11338,9 @@ let
       dependencies = [];
     };
     "hash.js" = sources."hash.js-1.1.7" {
+      dependencies = [];
+    };
+    hi-base32 = sources."hi-base32-0.5.1" {
       dependencies = [];
     };
     hmac-drbg = sources."hmac-drbg-1.0.1" {
@@ -9278,12 +11402,21 @@ let
     };
     jayson = sources."jayson-3.6.6" {
       dependencies = [
-        (sources."@types/node-12.20.38" {
+        (sources."@types/node-12.20.46" {
           dependencies = [];
         })
       ];
     };
+    js-sha256 = sources."js-sha256-0.9.0" {
+      dependencies = [];
+    };
     js-sha3 = sources."js-sha3-0.8.0" {
+      dependencies = [];
+    };
+    js-sha512 = sources."js-sha512-0.8.0" {
+      dependencies = [];
+    };
+    json-bigint = sources."json-bigint-1.0.0" {
       dependencies = [];
     };
     json-stringify-safe = sources."json-stringify-safe-5.0.1" {
@@ -9293,20 +11426,27 @@ let
       dependencies = [];
     };
     keccak = sources."keccak-3.0.2" {
-      dependencies = [
-        (sources."readable-stream-3.6.0" {
-          dependencies = [];
-        })
-      ];
-    };
-    keccak256 = sources."keccak256-1.0.6" {
-      dependencies = [
-        (sources."buffer-6.0.3" {
-          dependencies = [];
-        })
-      ];
+      dependencies = [];
     };
     lodash = sources."lodash-4.17.21" {
+      dependencies = [];
+    };
+    lru-cache = sources."lru-cache-6.0.0" {
+      dependencies = [];
+    };
+    make-error = sources."make-error-1.3.6" {
+      dependencies = [];
+    };
+    methods = sources."methods-1.1.2" {
+      dependencies = [];
+    };
+    mime = sources."mime-2.6.0" {
+      dependencies = [];
+    };
+    mime-db = sources."mime-db-1.51.0" {
+      dependencies = [];
+    };
+    mime-types = sources."mime-types-2.1.34" {
       dependencies = [];
     };
     minimalistic-assert = sources."minimalistic-assert-1.0.1" {
@@ -9315,15 +11455,14 @@ let
     minimalistic-crypto-utils = sources."minimalistic-crypto-utils-1.0.1" {
       dependencies = [];
     };
-    minimatch = sources."minimatch-3.0.4" {
+    minimatch = sources."minimatch-3.1.2" {
+      dependencies = [];
+    };
+    ms = sources."ms-2.1.2" {
       dependencies = [];
     };
     multistream = sources."multistream-4.1.0" {
-      dependencies = [
-        (sources."readable-stream-3.6.0" {
-          dependencies = [];
-        })
-      ];
+      dependencies = [];
     };
     noble-ed25519 = sources."noble-ed25519-1.2.6" {
       dependencies = [];
@@ -9355,14 +11494,16 @@ let
     process-nextick-args = sources."process-nextick-args-2.0.1" {
       dependencies = [];
     };
-    readable-stream = sources."readable-stream-2.3.7" {
-      dependencies = [
-        (sources."safe-buffer-5.1.2" {
-          dependencies = [];
-        })
-      ];
+    qs = sources."qs-6.10.3" {
+      dependencies = [];
+    };
+    querystringify = sources."querystringify-2.2.0" {
+      dependencies = [];
     };
     regenerator-runtime = sources."regenerator-runtime-0.13.9" {
+      dependencies = [];
+    };
+    requires-port = sources."requires-port-1.0.0" {
       dependencies = [];
     };
     rimraf = sources."rimraf-3.0.2" {
@@ -9383,6 +11524,9 @@ let
     secp256k1 = sources."secp256k1-4.0.3" {
       dependencies = [];
     };
+    semver = sources."semver-7.3.5" {
+      dependencies = [];
+    };
     side-channel = sources."side-channel-1.0.4" {
       dependencies = [];
     };
@@ -9395,12 +11539,11 @@ let
     "string.prototype.trimstart" = sources."string.prototype.trimstart-1.0.4" {
       dependencies = [];
     };
-    string_decoder = sources."string_decoder-1.1.1" {
-      dependencies = [
-        (sources."safe-buffer-5.1.2" {
-          dependencies = [];
-        })
-      ];
+    string_decoder = sources."string_decoder-1.3.0" {
+      dependencies = [];
+    };
+    superagent = sources."superagent-6.1.0" {
+      dependencies = [];
     };
     superstruct = sources."superstruct-0.14.2" {
       dependencies = [];
@@ -9412,7 +11555,17 @@ let
       dependencies = [];
     };
     through2 = sources."through2-2.0.5" {
-      dependencies = [];
+      dependencies = [
+        (sources."readable-stream-2.3.7" {
+          dependencies = [];
+        })
+        (sources."safe-buffer-5.1.2" {
+          dependencies = [];
+        })
+        (sources."string_decoder-1.1.1" {
+          dependencies = [];
+        })
+      ];
     };
     tmp = sources."tmp-0.2.1" {
       dependencies = [];
@@ -9421,6 +11574,9 @@ let
       dependencies = [];
     };
     tr46 = sources."tr46-0.0.3" {
+      dependencies = [];
+    };
+    ts-node = sources."ts-node-10.7.0" {
       dependencies = [];
     };
     tslib = sources."tslib-2.3.1" {
@@ -9432,13 +11588,16 @@ let
     unbox-primitive = sources."unbox-primitive-1.0.1" {
       dependencies = [];
     };
-    underscore = sources."underscore-1.13.2" {
+    url-parse = sources."url-parse-1.5.10" {
       dependencies = [];
     };
     util = sources."util-0.12.4" {
       dependencies = [];
     };
     util-deprecate = sources."util-deprecate-1.0.2" {
+      dependencies = [];
+    };
+    v8-compile-cache-lib = sources."v8-compile-cache-lib-3.0.0" {
       dependencies = [];
     };
     webidl-conversions = sources."webidl-conversions-3.0.1" {
@@ -9456,7 +11615,13 @@ let
     wrappy = sources."wrappy-1.0.2" {
       dependencies = [];
     };
-    ws = sources."ws-7.5.6" {
+    ws = sources."ws-7.5.7" {
+      dependencies = [];
+    };
+    yallist = sources."yallist-4.0.0" {
+      dependencies = [];
+    };
+    yn = sources."yn-3.1.1" {
       dependencies = [];
     };
     retry = sources."retry-0.13.1" {
@@ -9477,7 +11642,7 @@ let
     isarray = sources."isarray-1.0.0" {
       dependencies = [];
     };
-    jmespath = sources."jmespath-0.15.0" {
+    jmespath = sources."jmespath-0.16.0" {
       dependencies = [];
     };
     punycode = sources."punycode-1.3.2" {
@@ -9501,7 +11666,7 @@ let
     xmlbuilder = sources."xmlbuilder-9.0.7" {
       dependencies = [];
     };
-    "@sindresorhus/is" = sources."@sindresorhus/is-4.2.0" {
+    "@sindresorhus/is" = sources."@sindresorhus/is-4.6.0" {
       dependencies = [];
     };
     "@szmarczak/http-timer" = sources."@szmarczak/http-timer-5.0.1" {
@@ -9563,7 +11728,7 @@ let
     json-buffer = sources."json-buffer-3.0.1" {
       dependencies = [];
     };
-    keyv = sources."keyv-4.0.4" {
+    keyv = sources."keyv-4.1.1" {
       dependencies = [];
     };
     lowercase-keys = sources."lowercase-keys-3.0.0" {
@@ -9615,10 +11780,7 @@ let
     interpret = sources."interpret-2.2.0" {
       dependencies = [];
     };
-    is-core-module = sources."is-core-module-2.8.0" {
-      dependencies = [];
-    };
-    ms = sources."ms-2.1.2" {
+    is-core-module = sources."is-core-module-2.8.1" {
       dependencies = [];
     };
     path-parse = sources."path-parse-1.0.7" {
@@ -9630,10 +11792,13 @@ let
     rechoir = sources."rechoir-0.7.0" {
       dependencies = [];
     };
-    resolve = sources."resolve-1.20.0" {
+    resolve = sources."resolve-1.22.0" {
       dependencies = [];
     };
     resolve-from = sources."resolve-from-5.0.0" {
+      dependencies = [];
+    };
+    supports-preserve-symlinks-flag = sources."supports-preserve-symlinks-flag-1.0.0" {
       dependencies = [];
     };
     tarn = sources."tarn-3.0.2" {
@@ -9660,7 +11825,7 @@ let
     pg-int8 = sources."pg-int8-1.0.1" {
       dependencies = [];
     };
-    pg-pool = sources."pg-pool-3.4.1" {
+    pg-pool = sources."pg-pool-3.5.1" {
       dependencies = [];
     };
     pg-protocol = sources."pg-protocol-1.5.0" {
@@ -9688,6 +11853,75 @@ let
       dependencies = [];
     };
     xtend = sources."xtend-4.0.2" {
+      dependencies = [];
+    };
+    "@colors/colors" = sources."@colors/colors-1.5.0" {
+      dependencies = [];
+    };
+    "@dabh/diagnostics" = sources."@dabh/diagnostics-2.0.3" {
+      dependencies = [];
+    };
+    async = sources."async-3.2.3" {
+      dependencies = [];
+    };
+    color = sources."color-3.2.1" {
+      dependencies = [];
+    };
+    color-convert = sources."color-convert-1.9.3" {
+      dependencies = [];
+    };
+    color-name = sources."color-name-1.1.3" {
+      dependencies = [];
+    };
+    color-string = sources."color-string-1.9.0" {
+      dependencies = [];
+    };
+    colorspace = sources."colorspace-1.1.4" {
+      dependencies = [];
+    };
+    enabled = sources."enabled-2.0.0" {
+      dependencies = [];
+    };
+    fecha = sources."fecha-4.2.1" {
+      dependencies = [];
+    };
+    "fn.name" = sources."fn.name-1.1.0" {
+      dependencies = [];
+    };
+    is-arrayish = sources."is-arrayish-0.3.2" {
+      dependencies = [];
+    };
+    is-stream = sources."is-stream-2.0.1" {
+      dependencies = [];
+    };
+    kuler = sources."kuler-2.0.0" {
+      dependencies = [];
+    };
+    logform = sources."logform-2.4.0" {
+      dependencies = [];
+    };
+    one-time = sources."one-time-1.0.0" {
+      dependencies = [];
+    };
+    readable-stream = sources."readable-stream-3.6.0" {
+      dependencies = [];
+    };
+    safe-stable-stringify = sources."safe-stable-stringify-2.3.1" {
+      dependencies = [];
+    };
+    simple-swizzle = sources."simple-swizzle-0.2.2" {
+      dependencies = [];
+    };
+    stack-trace = sources."stack-trace-0.0.10" {
+      dependencies = [];
+    };
+    text-hex = sources."text-hex-1.0.0" {
+      dependencies = [];
+    };
+    triple-beam = sources."triple-beam-1.3.0" {
+      dependencies = [];
+    };
+    winston-transport = sources."winston-transport-4.5.0" {
       dependencies = [];
     };
   };

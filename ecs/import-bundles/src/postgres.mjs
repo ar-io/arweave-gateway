@@ -16,7 +16,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-import "./env.mjs";
 import AWS from "aws-sdk";
 import knex from "knex";
 
@@ -59,34 +58,12 @@ function getSecretValue(secretName) {
 }
 
 export async function createDbClient({ user }) {
-  const rdsReadRoleSecret = {
-    username: "",
-    password: "",
-    url: process.env.ARWEAVE_DB_READ_HOST,
-  };
-  const rdsWriteRoleSecret = {
-    username: "",
-    password: "",
-    url: process.env.ARWEAVE_DB_WRITE_HOST,
-  };
+  const host = {
+    read: process.env.ARWEAVE_DB_READ_HOST,
+    write: process.env.ARWEAVE_DB_WRITE_HOST,
+  }[user];
 
-  try {
-    const rdsProxySecretRead = JSON.parse(await getSecretValue("read"));
-    rdsReadRoleSecret.username = rdsProxySecretRead.username;
-    rdsReadRoleSecret.password = rdsProxySecretRead.password;
-  } catch (error) {
-    console.error(error);
-  }
-
-  try {
-    const rdsProxySecretWrite = JSON.parse(await getSecretValue("write"));
-    rdsWriteRoleSecret.username = rdsProxySecretWrite.username;
-    rdsWriteRoleSecret.password = rdsProxySecretWrite.password;
-  } catch (error) {
-    console.error(error);
-  }
-
-  const roleSecret = user === "read" ? rdsReadRoleSecret : rdsWriteRoleSecret;
+  const rdsCred = JSON.parse(await getSecretValue(user));
 
   return await knex({
     client: "pg",
@@ -98,11 +75,11 @@ export async function createDbClient({ user }) {
       reapIntervalMillis: 40000,
     },
     connection: {
-      host: roleSecret.url,
-      user: roleSecret.username,
+      host,
+      user,
       database: "arweave",
       ssl: false,
-      password: roleSecret.password,
+      password: rdsCred.password,
       expirationChecker: () => true,
     },
   });
@@ -120,7 +97,7 @@ const serialize = (row) => {
   }, {})(Object.keys(row));
 };
 
-const upsert = async (
+export const upsert = async (
   connection,
   { table, conflictKeys, rows, transaction }
 ) => {

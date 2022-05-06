@@ -16,15 +16,23 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import "dotenv/config";
 import AWS from "aws-sdk";
 import R from "ramda";
+import https from "https";
+import retry from "async-retry";
 import { Consumer } from "sqs-consumer";
-import verifyAndIndexStream from "arbundles/stream";
-import { Bundle, DataItem } from "arbundles";
 import exitHook from "exit-hook";
+import { promisify } from "node:util";
+import stream from "node:stream";
+import fs from "node:fs";
+import fsPromises from "node:fs/promises";
 import got from "got";
 import { createDbClient } from "./postgres.mjs";
-import { shuffle } from "./utils.mjs";
+import { shuffle, tmpFile } from "./utils.mjs";
+import { processAns102 } from "./ans102.mjs";
+import { isTxAns104, processAns104 } from "./ans104.mjs";
+import log from "./logger.mjs";
 
 let exitSignaled = false;
 
@@ -34,64 +42,80 @@ exitHook(() => {
 
 const nodes = new Set();
 
-async function refreshNodes() {
-  let jsonResponse;
-  try {
-    await retry(
-      async () => {
-        jsonResponse = await got("https://arweave.net/health").json();
-      },
-      {
-        retries: 5,
-      }
-    );
-  } catch (error) {
-    console.error(error);
-  }
-
-  if (typeof jsonResponse === "object" && Array.isArray(jsonResponse.origins)) {
-    for (const origin of jsonResponse.origins) {
-      if (origin.status === 200) {
-        nodes.add(origin.endpoint);
-      } else {
-        nodes.remove(origin.endpoint);
-      }
-    }
-  }
-}
-
-const getSpecificTxHeader = async (id) => {
-  let tx;
-  for (const node of nodes.values()) {
-    try {
-      const response = await got(node + "/tx/" + id).json();
-
-      if (typeof response === "object" && response.id === id) {
-        tx = response;
-      }
-    } catch (error) {
-      console.error(error);
-    }
-    if (tx) {
-      return tx;
-    }
-  }
-  return tx;
-};
-
 let dbRead;
 let dbWrite;
 
+const messageHandler = async (message) => {
+  console.log({ message });
+
+  let txId = undefined;
+
+  try {
+    txId = JSON.parse(message.Body)["id"];
+  } catch (error) {
+    log.error(error);
+  }
+
+  if (!txId) {
+    throw new Error("Couldn't retrieve txid from message");
+  }
+  let tx;
+
+  try {
+    tx = await dbRead.select().from("transactions").where({ id: txId }).first();
+  } catch (error) {
+    log.error(`querying for txID ${txId} from database failed`, error);
+  }
+
+  if (!tx) {
+    try {
+      tx = await got.get(`https://arweave.net:443/tx/${txId}`).json();
+    } catch (error) {
+      log.error(error);
+    }
+  }
+
+  if (!tx) {
+    throw new Error("Couldn't download tx header for: " + txId);
+  }
+
+  // do some work with `message`
+  const txDataSize = parseInt(tx["data_size"]);
+
+  const filePath = tmpFile();
+  const pipeline = promisify(stream.pipeline);
+
+  await pipeline(
+    got.stream(`https://arweave.net:443/${tx.id}`),
+    fs.createWriteStream(filePath)
+  );
+
+  if (isTxAns104(tx)) {
+    await processAns104({
+      tx,
+      filePath,
+      dbRead,
+      dbWrite,
+      parent: tx.id,
+    });
+  } else {
+    await processAns102({
+      tx,
+      filePath,
+      dbRead,
+      dbWrite,
+      parent: tx.id,
+    });
+  }
+
+  await fsPromises.unlink(filePath);
+};
+
 const app = Consumer.create({
   queueUrl: process.env.ARWEAVE_SQS_IMPORT_BUNDLES_URL,
-  handleMessage: async (message) => {
-    console.log("MESSAGE", message);
-    // do some work with `message`
-    const tx = getSpecificTxHeader(message.tx_id);
-    const txDataSize = parseInt(tx["data_size"]);
-
-    const maybeStream = await getData(tx.id || "", { log });
-  },
+  pollingWaitTimeMs: 10000,
+  batchSize: 1,
+  handleMessage: messageHandler,
   sqs: new AWS.SQS({
     httpOptions: {
       agent: new https.Agent({
@@ -102,33 +126,25 @@ const app = Consumer.create({
 });
 
 app.on("error", (err) => {
-  console.error("[SQS] ERROR", err.message);
+  log.error("[SQS] ERROR " + err.message);
 });
 
 app.on("processing_error", (err) => {
-  console.error("[SQS] PROCESSING ERROR", err.message);
+  log.error("[SQS] PROCESSING ERROR" + err.message);
+  process.exit(1);
 });
 
 (async () => {
-  console.log("Starting import-bundles job..");
-  await refreshNodes();
+  log.info("Starting import-bundles job..");
 
-  setInterval(async () => {
-    try {
-      await refreshNodes();
-    } catch (error) {
-      console.error("Failed to refresh nodes", error);
-    }
-  }, 1000 * 60 * 60);
-
-  console.log("opening new dbWrite connection");
+  log.info("opening new dbWrite connection");
   dbWrite = await createDbClient({
     user: "write",
   });
-  console.log("opening new dbRead connection");
+  log.info("opening new dbRead connection");
   dbRead = await createDbClient({
     user: "read",
   });
-  console.log("start polling sqs messages...");
+  log.info("start polling sqs messages...");
   app.start();
 })();
